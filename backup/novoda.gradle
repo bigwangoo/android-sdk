@@ -1,0 +1,20 @@
+// root gradle
+apply plugin: 'com.novoda.bintray-release'
+
+// 配置
+publish {
+    userOrg = 'novoda'
+    groupId = 'com.novoda'
+    artifactId = 'bintray-release'
+    publishVersion = '0.3.4'
+}
+
+// 需要加入
+lintOptions {
+    abortOnError false
+}
+
+// 发布
+// gradlew clean build bintrayUpload -PbintrayUser=BINTRAY_USERNAME -PbintrayKey=BINTRAY_KEY -PdryRun=false
+
+

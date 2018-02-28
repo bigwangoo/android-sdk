@@ -1,0 +1,101 @@
+apply plugin: 'com.android.application'
+
+//解决中文乱码
+def app_name = new String(project.APP_NAME.toString().replace("\"", "").getBytes("ISO8859-1"), "UTF-8")
+def app_type = project.APP_TYPE.toString().replace("\"", "")
+def hospital = project.HOSPITAL.toString().replace("\"", "")
+def protocol_url = new String(project.PROTOCOL_URL.toString().getBytes("ISO8859-1"), "UTF-8")
+
+android {
+
+    buildToolsVersion rootProject.ext.versions['buildToolsVersion']
+    compileSdkVersion rootProject.ext.versions['compileSdkVersion']
+
+    defaultConfig {
+        applicationId rootProject.ext.versions['applicationId']
+        minSdkVersion rootProject.ext.versions['minSdkVersion']
+        targetSdkVersion rootProject.ext.versions['targetSdkVersion']
+        versionCode rootProject.ext.versions['versionCode']
+        versionName rootProject.ext.versions['versionName']
+
+        multiDexEnabled true
+
+        resValue("string", "app_name", app_name)
+
+        buildConfigField("String", "THEME", project.THEME)
+        buildConfigField("String", "APP_TYPE", project.APP_TYPE)
+        buildConfigField("String", "HOSPITAL", project.HOSPITAL)
+        buildConfigField("String", "USER_TYPE", project.USER_TYPE)
+        buildConfigField("String", "BASE_URL", project.BASE_URL)
+        buildConfigField("String", "PROTOCOL_URL", protocol_url)
+
+        buildConfigField("String", "AMAP_APP_ID", project.AMAP_APP_ID)
+        buildConfigField("String", "BUGLY_APP_ID", project.BUGLY_APP_ID)
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+            storeFile file("../Keystores/release.jks")
+            storePassword project.KEYSTORE_PASSWORD
+            keyAlias project.KEY_NAME
+            keyPassword project.KEY_PASSWORD
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    dexOptions {
+        jumboMode = true
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        // 输出为: app_1000_doctor_v1.0_flavor.apk
+                        outputFileName = "${app_name}_${hospital}_" +
+                                "${app_type}_v${defaultConfig.versionName}_${variant.buildType.name}.apk"
+                    }
+                }
+            }
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    // 多dex配置
+    api 'com.android.support:multidex:1.0.2'
+    api rootProject.ext.dependencies["appcompat-v7"]
+    api rootProject.ext.dependencies["constraint"]
+    api rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
+
+    implementation project(':TxUtils_v2')
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}

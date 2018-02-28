@@ -1,0 +1,55 @@
+<resources>
+    <string name="tx_app_name">TxUtils</string>
+    <string name="tx_about_us">关于我们</string>
+    <string name="tx_loading">加载中...</string>
+    <string name="tx_please_check_network">请检查网络连接</string>
+
+    <!-- 更新 -->
+    <string name="tx_check_update">检查更新</string>
+    <string name="tx_update">更新</string>
+    <string name="tx_cancel">取消</string>
+    <string name="tx_already_newest_version">已是最新版本</string>
+    <string name="tx_software_update">软件更新</string>
+    <string name="tx_cancel_update">已取消更新</string>
+    <string name="tx_file_not_exist">文件不存在</string>
+
+    <string name="tx_login">登录</string>
+    <string name="tx_login_first">请先登录</string>
+    <string name="tx_try_later">获取失败，请稍后重试</string>
+    <string name="tx_error_reading_cache">缓存读取失败</string>
+    <string name="tx_network_slow">网络连接较慢，请检查后重试</string>
+    <string name="tx_register_fail">注册失败</string>
+
+    <string name="tx_gallery">相册</string>
+    <string name="tx_take_photo">拍照</string>
+    <string name="tx_no_permission">没有权限</string>
+    <!-- 权限 -->
+    <string name="tx_rationale_camera">程序需要相机权限进行拍照</string>
+    <string name="tx_rationale_gallery">程序需要SD卡读写权限选取照片</string>
+    <string name="tx_rationale_ask_again">没有权限本APP可能无法正常工作，出现问题请到设置中修改程序权限。</string>
+    <string name="tx_title_settings_dialog">需要权限</string>
+    <string name="tx_setting">设置</string>
+    <string name="tx_returned_from_app_settings_to_activity">设置完毕</string>
+
+    <!--修改密码-->
+    <string name="old_pwd">原密码</string>
+    <string name="new_pwd">新密码</string>
+    <string name="new_pwd_confirm">确认密码</string>
+    <string name="hint_old_pwd">请输入原密码</string>
+    <string name="hint_new_pwd">请输入新密码</string>
+    <string name="hint_new_pwd_confirm">请输入确认密码</string>
+    <string name="modify_pwd_empty_old">请输入原密码</string>
+    <string name="modify_pwd_empty_new">请输入新密码</string>
+    <string name="modify_pwd_contain_blank">新密码不能包含空格</string>
+    <string name="modify_pwd_chinese_pwd">新密码不能包含中文</string>
+    <string name="modify_pwd_length_pwd">新密码长度应为6-20个字符</string>
+    <string name="modify_pwd_same">新密码不能与原密码相同</string>
+    <string name="modify_pwd_check_confirm">确认密码与新密码不一致</string>
+    <string name="change_success">修改成功</string>
+
+    <!-- 加载loading -->
+    <string name="loading">正在加载中...</string>
+    <string name="load_failed">加载失败，请点我重试</string>
+    <string name="load_end">没有更多数据</string>
+
+</resources>
