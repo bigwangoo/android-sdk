@@ -93,7 +93,7 @@ dependencies {
     api rootProject.ext.dependencies["butterknife"]
     annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
 
-    implementation project(':TxUtils_v2')
+    implementation project(':txutils_v2')
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

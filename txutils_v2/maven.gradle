@@ -5,8 +5,8 @@ apply plugin: 'com.jfrog.bintray'
 // gradlew install
 // gradlew bintrayUpload
 
-def siteUrl = 'https://github.com/bigwangoo/android-market'
-def gitUrl = 'https://github.com/bigwangoo/android-market.git'
+def siteUrl = 'https://github.com/bigwangoo/android-sdk'
+def gitUrl = 'https://github.com/bigwangoo/android-sdk.git'
 
 /*基础配置*/
 group = "com.tianxiabuyi"
@@ -18,7 +18,7 @@ install {
         pom {
             project {
                 packaging 'aar'
-                name 'txby sdk for android.' //项目描述
+                name 'sdk for android.' //项目描述
                 url siteUrl
                 licenses {
                     license {
@@ -80,7 +80,7 @@ bintray {
         //发布到JCenter上的项目名字
         name = "txutils_v2"
         //项目描述
-        desc = 'txby sdk for android.'
+        desc = 'sdk for android.'
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]

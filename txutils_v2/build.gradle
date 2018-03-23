@@ -58,7 +58,3 @@ dependencies {
 
 // maven
 apply from: "maven.gradle"
-
-// jitPack
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.bigwangoo'
