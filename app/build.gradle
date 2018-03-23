@@ -36,22 +36,11 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file("../Keystores/release.jks")
+            storeFile file(project.KEYSTORE_FILE)
             storePassword project.KEYSTORE_PASSWORD
             keyAlias project.KEY_NAME
             keyPassword project.KEY_PASSWORD
         }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
-    }
-    dexOptions {
-        jumboMode = true
-    }
-    lintOptions {
-        checkReleaseBuilds false
-        abortOnError false
     }
     buildTypes {
         release {
@@ -63,9 +52,8 @@ android {
                 variant.outputs.all { output ->
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                        // 输出为: app_1000_doctor_v1.0_flavor.apk
-                        outputFileName = "${app_name}_${hospital}_" +
-                                "${app_type}_v${defaultConfig.versionName}_${variant.buildType.name}.apk"
+                        // 输出为: app_1000_doctor_v1.0_release.apk
+                        outputFileName = "${app_name}_${hospital}_${app_type}_v${defaultConfig.versionName}_${variant.buildType.name}.apk"
                     }
                 }
             }
@@ -77,6 +65,17 @@ android {
             signingConfig signingConfigs.release
         }
     }
+    dexOptions {
+        jumboMode = true
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
     repositories {
         flatDir {
             dirs 'libs'
@@ -86,14 +85,13 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    // 多dex配置
-    api 'com.android.support:multidex:1.0.2'
+    api 'com.android.support:multidex:1.0.3'
     api rootProject.ext.dependencies["appcompat-v7"]
     api rootProject.ext.dependencies["constraint"]
     api rootProject.ext.dependencies["butterknife"]
     annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
 
-    implementation project(':txutils_v2')
+    implementation project(':sdk')
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

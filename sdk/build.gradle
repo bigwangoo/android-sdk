@@ -49,12 +49,11 @@ dependencies {
     api rootProject.ext.dependencies["eventbus3"]
     api rootProject.ext.dependencies["photoview"]
     api rootProject.ext.dependencies["roundedimageview"]
+
+    api rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
+
     api rootProject.ext.dependencies["glide"]
     implementation rootProject.ext.dependencies["imageloader"]
-    // butterKnife
-//    api rootProject.ext.dependencies["butterknife"]
-//    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
 }
 
-// maven
-apply from: "maven.gradle"
