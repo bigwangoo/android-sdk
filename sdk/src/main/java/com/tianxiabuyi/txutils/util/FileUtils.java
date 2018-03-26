@@ -1,6 +1,5 @@
 package com.tianxiabuyi.txutils.util;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -16,81 +15,103 @@ import java.text.DecimalFormat;
 import java.util.LinkedList;
 
 /**
- * Created by xjh1994 on 16/11/11.
  * 文件相关
+ * tip:
+ * Android相关存储路径
+ * -------------------------------------------------------------------------------------------------
+ * 一、独立文件夹
+ * Environment.getExternalStorageDirectory() = /mnt/sdcard
+ * Environment.getExternalStoragePublicDirectory(“test”) = /mnt/sdcard/test
+ * Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES = /mnt/sdcard/Pictures
+ * Environment.getRootDirectory() = /system
+ * Environment.getDataDirectory() = /data
+ * Environment.getDownloadCacheDirectory() = /cache
+ * <p>
+ * <p>
+ * 二、专属文件夹(卸载后自动删除)
+ * - 1) 存储在 internal storage
+ * Context.getFilesDir() = /data/data/com.my.app/files
+ * Context.getCacheDir() = /data/data/com.my.app/cache
+ * Context.getDir(“test”, Context.MODE_PRIVATE) = /data/data/com.my.app/app_test
+ * Context.getDatabasePath(“test”) = /data/data/com.my.app/databases/test
+ * Context.getPackageCodePath() = /data/app/com.my.app-1.apk
+ * Context.getPackageResourcePath() = /data/app/com.my.app-1.apk
+ * <p>
+ * - 2) 存储在 external storage:
+ * Context.getExternalCacheDir() = /mnt/sdcard/Android/data/com.my.app/cache
+ * Context.getExternalFilesDir(“test”) = /mnt/sdcard/Android/data/com.my.app/files/test
+ * Context.getExternalFilesDir(null) = /mnt/sdcard/Android/data/com.my.app/files
+ * -------------------------------------------------------------------------------------------------
+ *
+ * @author WangYaoDong
+ * @date 2018/3/26 13:38
  */
 public class FileUtils {
 
     /**
      * 项目文件统一处理，放在txby/app包名/分类
      */
-    public static final String ROOT_DIR = "TXBY";
-
-    // 下载
-    public static final String DOWNLOAD = "download";
+    private static final Object ROOT_DIR = "txby";
+    // 保存图片的路径
+    public static final String ICON_DIR = "icon";
+    // 缓存的文件
+    public static final String CACHE_DIR = "cache";
     // 文件
-    public static final String FILE = "file";
-    // 图片
-    public static final String ICON = "icon";
-    // 缓存
-    public static final String CACHE = "cache";
+    public static final String FILE_DIR = "file";
+    // 下载文件的路径
+    public static final String DOWNLOAD_DIR = "download";
 
-    public static boolean isSDCardExist() {
-        return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
-                || !Environment.isExternalStorageRemovable();
+
+    public static String getIconDir() {
+        return getAppDir(ICON_DIR);
+    }
+
+    public static String getCacheDir() {
+        return getAppDir(CACHE_DIR);
+    }
+
+    public static String getDownloadDir() {
+        return getAppDir(DOWNLOAD_DIR);
+    }
+
+    public static String getAppDir(String name) {
+        StringBuilder sb = new StringBuilder();
+        if (isSDCardAvailable()) {
+            sb.append(getExternalStoragePath());
+        } else {
+            sb.append(getCachePath());
+        }
+        if (!TextUtils.isEmpty(name)) {
+            sb.append(name);
+            sb.append(File.separator);
+        }
+        String path = sb.toString();
+        if (createDirs(path)) {
+            return path;
+        } else {
+            return null;
+        }
     }
 
     /**
-     * 文件目录
-     *
-     * @param uniqueName such as DOWNLOAD FILE ICON CACHE
-     * @return File
+     * 判断sd卡是否挂载
      */
-    public static File getExternalRootDir(String uniqueName) {
-        StringBuilder sb = new StringBuilder();
-        if (isSDCardExist()) {
-            sb.append(Environment.getExternalStorageDirectory().getAbsolutePath());
-            sb.append(File.separator);
-            sb.append(ROOT_DIR);
-            sb.append(File.separator);
-            sb.append(TxUtils.getInstance().getContext().getPackageName());
-            sb.append(File.separator);
-        } else {
-            sb.append(TxUtils.getInstance().getContext().getCacheDir().getAbsolutePath());
-            sb.append(File.separator);
-        }
-        if (!TextUtils.isEmpty(uniqueName)) {
-            sb.append(uniqueName);
-            sb.append(File.separator);
-        }
-        try {
-            // 权限
-            File file = new File(sb.toString());
-            if (!file.exists() || !file.isDirectory()) {
-                boolean mkdirs = file.mkdirs();
-            }
-            return file;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+    public static boolean isSDCardAvailable() {
+        return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
     }
 
     /**
      * 缓存目录
-     *
-     * @param uniqueName name
-     * @return File
      */
-    public static File getExternalCacheDir(String uniqueName) {
+    public static File getExternalCacheDir() {
         String cachePath;
-        if (isSDCardExist()) {
+        if (isSDCardAvailable() && TxUtils.getInstance().getContext().getExternalCacheDir() != null) {
             cachePath = TxUtils.getInstance().getContext().getExternalCacheDir().getAbsolutePath();
         } else {
             cachePath = TxUtils.getInstance().getContext().getCacheDir().getAbsolutePath();
         }
         try {
-            File file = new File(cachePath + File.separator + uniqueName);
+            File file = new File(cachePath);
             if (!file.exists() || !file.isDirectory()) {
                 boolean mkdirs = file.mkdirs();
             }
@@ -103,18 +124,16 @@ public class FileUtils {
 
     /**
      * 下载目录
-     *
-     * @return File
      */
     public static File getExternalDownloadDir() {
         String cacheDir;
-        if (isSDCardExist()) {
-            cacheDir = Environment.getExternalStorageDirectory().getAbsolutePath();
+        if (isSDCardAvailable()) {
+            cacheDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
         } else {
-            cacheDir = TxUtils.getInstance().getContext().getCacheDir().getAbsolutePath();
+            cacheDir = TxUtils.getInstance().getContext().getFilesDir().getAbsolutePath();
         }
         try {
-            File file = new File(cacheDir + File.separator + Environment.DIRECTORY_DOWNLOADS);
+            File file = new File(cacheDir);
             if (!file.exists() || !file.isDirectory()) {
                 boolean mkdirs = file.mkdirs();
             }
@@ -125,6 +144,46 @@ public class FileUtils {
         return null;
     }
 
+
+    //////////////////////////////// private
+
+    /**
+     * 返回 sd卡的路径
+     */
+    private static String getExternalStoragePath() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+        sb.append(File.separator);
+        sb.append(ROOT_DIR);
+        sb.append(File.separator);
+        return sb.toString();
+    }
+
+    /**
+     * 返回 cache的路径
+     */
+    private static String getCachePath() {
+        File file = TxUtils.getInstance().getContext().getCacheDir();
+        return file.getAbsolutePath() + File.separator;
+    }
+
+    /**
+     * 创建文件夹
+     */
+    private static boolean createDirs(String path) {
+        // 写权限
+        try {
+            File file = new File(path);
+            return !(!file.exists() || !file.isDirectory()) || file.mkdirs();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    //////////////////////////////// 缓存管理
+
     /**
      * 获取缓存大小
      *
@@ -134,7 +193,7 @@ public class FileUtils {
     public static String getTotalCacheSize(Context context) {
         long cacheSize = 0;
         cacheSize = getFileSize(context.getCacheDir());
-        if (isSDCardExist()) {
+        if (isSDCardAvailable()) {
             cacheSize += getFileSize(context.getExternalCacheDir());
         }
         return formatFileSize(cacheSize);
@@ -147,8 +206,11 @@ public class FileUtils {
      */
     public static void clearAllCache(Context context) {
         deleteDir(context.getCacheDir().getAbsolutePath());
-        if (isSDCardExist()) {
-            deleteDir(context.getExternalCacheDir().getAbsolutePath());
+        if (isSDCardAvailable()) {
+            File cacheDir = context.getExternalCacheDir();
+            if (cacheDir != null) {
+                deleteDir(cacheDir.getAbsolutePath());
+            }
         }
     }
 
@@ -178,6 +240,7 @@ public class FileUtils {
      * 获取剩余空间
      */
     public static String getRestSize() {
+        // TODO
         return "";
     }
 
@@ -189,7 +252,7 @@ public class FileUtils {
             return 0;
         }
         long size = 0;
-        File files[] = path.listFiles();
+        File[] files = path.listFiles();
         if (files != null && files.length > 0) {
             for (File file : files) {
                 if (file.isDirectory()) {
@@ -207,13 +270,13 @@ public class FileUtils {
     /**
      * 递归求取目录文件个数
      */
-    public static long getFilelist(File path) {
+    public static long getFileList(File path) {
         long size = 0;
-        File files[] = path.listFiles();
+        File[] files = path.listFiles();
         size = files.length;
         for (File file : files) {
             if (file.isDirectory()) {
-                size = size + getFilelist(file);
+                size = size + getFileList(file);
                 size--;
             }
         }
@@ -240,9 +303,8 @@ public class FileUtils {
 
     /**
      * 删除文件夹下文件
-     * <p>
-     * mmp CoolPad手机 删除cache目录后, 再次调用context.getExternalCacheDir()闪退
-     * 所以只能删除目录下文件 不包括目录
+     * 注：删除cache目录后, 再次调用context.getExternalCacheDir()闪退 所以删除文件不包括目录
+     * 如 CoolPad手机
      *
      * @param path path
      */
@@ -267,7 +329,7 @@ public class FileUtils {
      * 递归创建文件夹
      *
      * @param dirPath 目录
-     * @return 创建失败返回""
+     * @return 创建失败返回 ""
      */
     public static String createDir(String dirPath) {
         try {
@@ -291,7 +353,7 @@ public class FileUtils {
      * 递归创建文件夹
      *
      * @param file
-     * @return 创建失败返回""
+     * @return 创建失败返回 ""
      */
     public static String createFile(File file) {
         try {
@@ -314,7 +376,7 @@ public class FileUtils {
      * 判断文件路径是否存在
      *
      * @param filePath path
-     * @return true 存在 false 不存在
+     * @return true 存在,  false 不存在
      */
     public static boolean isExist(String filePath) {
         File file = new File(filePath);
@@ -324,7 +386,7 @@ public class FileUtils {
     /**
      * 获取Bitmap大小
      */
-    public static long getBitmapsize(Bitmap bitmap) {
+    public static long getBitmapSize(Bitmap bitmap) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1) {
             return bitmap.getByteCount();
         }
@@ -339,6 +401,9 @@ public class FileUtils {
         return file.getName().substring(file.getName().indexOf("."));
     }
 
+    /**
+     * 获取文件名
+     */
     public static String getFileNameFromUrl(String url) {
         try {
             String[] urlArray = url.split("/");
@@ -350,44 +415,8 @@ public class FileUtils {
         return "";
     }
 
-    public static String getMIMEType(File file) {
-        String type = "*/*";
-        String fName = file.getName();
-        // 获取后缀名前的分隔符"."在fName中的位置。
-        int dotIndex = fName.lastIndexOf(".");
-        if (dotIndex < 0) {
-            return type;
-        }
-        // 获取文件的后缀名
-        String end = fName.substring(dotIndex, fName.length()).toLowerCase();
-        if (end.equals("")) return type;
-        // 在MIME和文件类型的匹配表中找到对应的MIME类型。
-        for (String[] mimeTable : MIME_MAP_TABLE) {
-            // MIME_MapTable??在这里你一定有疑问，这个MIME_MapTable是什么？
-            if (end.equals(mimeTable[0])) {
-                type = mimeTable[1];
-            }
-        }
-        return type;
-    }
-
-    private static final String[][] MIME_MAP_TABLE = {
-            //{后缀名，MIME类型}
-            {".doc", "application/msword"},
-            {".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"},
-            {".xls", "application/vnd.ms-excel"},
-            {".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
-            {".pdf", "application/pdf"},
-            {".ppt", "application/vnd.ms-powerpoint"},
-            {".pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation"},
-            {".jpeg", "image/jpeg"},
-            {".jpg", "image/jpeg"},
-            {".zip", "application/x-zip-compressed"},
-            {"", "*/*"}
-    };
-
     /**
-     * MD5
+     * 获取字符串 MD5
      */
     public static String md5(String paramString) {
         String returnStr;
@@ -404,13 +433,12 @@ public class FileUtils {
     }
 
     /**
-     * 将指定 byte数组 转换成 16进制 字符串
+     * 将指定 byte数组转换成16进制字符串
      */
-    @SuppressLint("DefaultLocale")
-    public static String byteToHexString(byte[] b) {
+    private static String byteToHexString(byte[] bytes) {
         StringBuilder hexString = new StringBuilder();
-        for (byte aB : b) {
-            String hex = Integer.toHexString(aB & 0xFF);
+        for (byte b : bytes) {
+            String hex = Integer.toHexString(b & 0xFF);
             if (hex.length() == 1) {
                 hex = '0' + hex;
             }
@@ -418,4 +446,45 @@ public class FileUtils {
         }
         return hexString.toString();
     }
+
+    /**
+     * 读取文件 MIME
+     */
+    public static String getMIMEType(File file) {
+        String type = "*/*";
+        String fName = file.getName();
+        // 获取后缀名前的分隔符"."在fName中的位置。
+        int dotIndex = fName.lastIndexOf(".");
+        if (dotIndex < 0) {
+            return type;
+        }
+        // 获取文件的后缀名
+        String end = fName.substring(dotIndex, fName.length()).toLowerCase();
+        if (end.equals("")) {
+            return type;
+        }
+        // 在MIME和文件类型的匹配表中找到对应的MIME类型。
+        for (String[] mimeTable : MIME_MAP_TABLE) {
+            if (end.equals(mimeTable[0])) {
+                type = mimeTable[1];
+            }
+        }
+        return type;
+    }
+
+    // {后缀名，MIME类型}
+    private static final String[][] MIME_MAP_TABLE = {
+            {".doc", "application/msword"},
+            {".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"},
+            {".xls", "application/vnd.ms-excel"},
+            {".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
+            {".pdf", "application/pdf"},
+            {".ppt", "application/vnd.ms-powerpoint"},
+            {".pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation"},
+            {".jpeg", "image/jpeg"},
+            {".jpg", "image/jpeg"},
+            {".zip", "application/x-zip-compressed"},
+            {"", "*/*"}
+    };
+
 }

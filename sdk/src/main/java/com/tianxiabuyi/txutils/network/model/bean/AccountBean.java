@@ -1,7 +1,8 @@
 package com.tianxiabuyi.txutils.network.model.bean;
 
-import com.tianxiabuyi.txutils.db.annotation.Column;
-import com.tianxiabuyi.txutils.db.annotation.Table;
+
+import org.xutils.db.annotation.Column;
+import org.xutils.db.annotation.Table;
 
 /**
  * Created by Administrator on 2017/5/2.
