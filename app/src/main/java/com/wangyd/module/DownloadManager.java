@@ -3,14 +3,12 @@ package com.wangyd.module;
 import android.content.Intent;
 
 import com.tianxiabuyi.txutils.TxUtils;
-import com.tianxiabuyi.txutils.network.model.HttpResult;
+import com.tianxiabuyi.txutils.manager.ThreadManager;
 import com.tianxiabuyi.txutils.util.FileProvider7;
 import com.wangyd.module.manager.AppInfo;
 import com.wangyd.module.manager.DownloadInfo;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -96,9 +94,8 @@ public class DownloadManager {
             notifyDownloadStateChanged(info);
             DownloadTask task = new DownloadTask(info);
             mTaskMap.put(info.getId(), task);
-            //ThreadManager.creatDownLoadPool().execute(task);
+            ThreadManager.creatDownLoadPool().execute(task);
         }
-
     }
 
     /**

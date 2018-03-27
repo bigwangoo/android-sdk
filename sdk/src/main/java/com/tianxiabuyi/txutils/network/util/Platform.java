@@ -3,6 +3,7 @@ package com.tianxiabuyi.txutils.network.util;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.NonNull;
 
 import com.tianxiabuyi.txutils.log.TxLog;
 
@@ -49,7 +50,7 @@ public class Platform {
             private final Handler handler = new Handler(Looper.getMainLooper());
 
             @Override
-            public void execute(Runnable r) {
+            public void execute(@NonNull Runnable r) {
                 handler.post(r);
             }
         }
