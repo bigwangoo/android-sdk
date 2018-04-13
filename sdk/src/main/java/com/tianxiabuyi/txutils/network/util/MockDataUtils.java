@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.res.AssetManager;
 
 import com.tianxiabuyi.txutils.TxUtils;
-import com.tianxiabuyi.txutils.db.util.IOUtil;
+
+import org.xutils.common.util.IOUtil;
 
 import java.io.IOException;
 import java.io.InputStream;

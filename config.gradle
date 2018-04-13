@@ -1,9 +1,9 @@
-def supportVersion = "27.0.2"
+def supportVersion = "27.0.0"
 
 ext {
     versions = [
             "applicationId"    : "com.bigwangoo.sample",
-            "buildToolsVersion": "27.0.2",
+            "buildToolsVersion": "27.0.3",
             "compileSdkVersion": 26,
             "minSdkVersion"    : 16,
             "targetSdkVersion" : 26,
@@ -19,15 +19,14 @@ ext {
             "cardview-v7"             : "com.android.support:cardview-v7:${supportVersion}",
             "design"                  : "com.android.support:design:${supportVersion}",
             "constraint"              : "com.android.support.constraint:constraint-layout:1.0.2",
-            "butterknife"             : "com.jakewharton:butterknife:8.8.1",
-            "butterknife_compiler"    : "com.jakewharton:butterknife-compiler:8.8.1",
-            // rx
-            "rxjava"                  : "io.reactivex.rxjava2:rxjava:2.1.8",
-            "rxandroid"               : "io.reactivex.rxjava2:rxandroid:2.0.1",
+            "multidex"                : "com.android.support:multidex:1.0.3",
+
             // network
             "xutils"                  : "org.xutils:xutils:3.3.36",
-            "okhttp3"                 : "com.squareup.okhttp3:okhttp:3.4.1",
+            "rxjava2"                  : "io.reactivex.rxjava2:rxjava:2.1.8",
+            "rxandroid2"               : "io.reactivex.rxjava2:rxandroid:2.0.1",
             "okio"                    : "com.squareup.okio:okio:1.9.0",
+            "okhttp3"                 : "com.squareup.okhttp3:okhttp:3.4.1",
             "retrofit"                : "com.squareup.retrofit2:retrofit:2.1.0",
             "converter-gson"          : "com.squareup.retrofit2:converter-gson:2.1.0",
             "converter-rxjava"        : "com.squareup.retrofit2:adapter-rxjava:2.1.0",
@@ -38,6 +37,7 @@ ext {
             "picasso"                 : "com.squareup.picasso:picasso:2.4.0",
             "imageloader"             : "com.nostra13.universalimageloader:universal-image-loader:1.9.5",
             "okhttputils"             : "com.zhy:okhttputils:2.6.2",
+
             // view
             "RecyclerViewHelper"      : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34",
             "FlycoTabLayout_Lib"      : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
@@ -49,6 +49,7 @@ ext {
             "flowlayout"              : "com.hyman:flowlayout-lib:1.1.2", //流式布局
             "foldable-layout"         : "com.alexvasilkov:foldable-layout:1.2.0", //折叠布局
             "etsy-grid"               : "com.etsy.android.grid:library:1.0.5", //瀑布流控件，已不再更新
+
             // tools
             "easypermissions"         : "pub.devrel:easypermissions:1.1.3",
             "eventbus3"               : "org.greenrobot:eventbus:3.0.0",
@@ -57,7 +58,10 @@ ext {
             "uCrop"                   : "com.yalantis:ucrop:2.2.1",
             "album"                   : "com.yanzhenjie:album:2.0.2",
             "activityrouter"          : "com.github.mzule.activityrouter:activityrouter:1.2.2",
-            "activityrouter_compiler" : "com.github.mzule.activityrouter:compiler:1.1.7",
+            "activityrouter-compiler" : "com.github.mzule.activityrouter:compiler:1.1.7",
+            "butterknife"             : "com.jakewharton:butterknife:8.8.1",
+            "butterknife-compiler"    : "com.jakewharton:butterknife-compiler:8.8.1",
+
             // test
             "logger"                  : "com.orhanobut:logger:1.15", //日志优化
             "leakcanary"              : "com.squareup.leakcanary:leakcanary-android:1.3.1", //内存泄露检测

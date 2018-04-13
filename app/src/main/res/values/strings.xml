@@ -1,4 +1,5 @@
 <resources>
 
     <string name="txt_style">样式</string>
+    <string name="cus_search_hint">输入搜索内容</string>
 </resources>

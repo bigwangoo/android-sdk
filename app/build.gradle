@@ -1,13 +1,18 @@
 apply plugin: 'com.android.application'
 
-//解决中文乱码
-def app_name = new String(project.APP_NAME.toString().replace("\"", "").getBytes("ISO8859-1"), "UTF-8")
+// Jenkins
+static def getDate() {
+    return new Date().format('yyyyMMddHHmm')
+}
+
+// 解决中文乱码
+def app_name = project.APP_NAME.toString().replace("\"", "")
+app_name = new String(app_name.getBytes("ISO8859-1"), "UTF-8")
 def app_type = project.APP_TYPE.toString().replace("\"", "")
 def hospital = project.HOSPITAL.toString().replace("\"", "")
 def protocol_url = new String(project.PROTOCOL_URL.toString().getBytes("ISO8859-1"), "UTF-8")
 
 android {
-
     buildToolsVersion rootProject.ext.versions['buildToolsVersion']
     compileSdkVersion rootProject.ext.versions['compileSdkVersion']
 
@@ -18,7 +23,11 @@ android {
         versionCode rootProject.ext.versions['versionCode']
         versionName rootProject.ext.versions['versionName']
 
+        ndk {
+            abiFilters "armeabi", "x86"
+        }
         multiDexEnabled true
+        multiDexKeepProguard file('keep_in_main_dex.pro')
 
         resValue("string", "app_name", app_name)
 
@@ -57,41 +66,65 @@ android {
                     }
                 }
             }
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        outputFileName = "${app_name}_${app_type}" +
+                                "_v${defaultConfig.versionName}" +
+                                "_${defaultConfig.versionCode}" +
+                                "_${variant.buildType.name}_" + getDate() + ".apk"
+                    }
+                }
+            }
         }
         debug {
+            // versionNameSuffix '-debug'
             minifyEnabled false
             debuggable true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
     }
-    dexOptions {
-        jumboMode = true
-    }
-    lintOptions {
-        checkReleaseBuilds false
-        abortOnError false
-    }
+
+    // channels walle
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
-    repositories {
-        flatDir {
-            dirs 'libs'
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    dexOptions {
+        jumboMode = true
+        javaMaxHeapSize "4g"
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
         }
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
     }
 }
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    api 'com.android.support:multidex:1.0.3'
+    api rootProject.ext.dependencies["multidex"]
     api rootProject.ext.dependencies["appcompat-v7"]
     api rootProject.ext.dependencies["constraint"]
-    api rootProject.ext.dependencies["butterknife"]
-    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
-    implementation project(':sdk')
+    implementation project(':sdk-kit')
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

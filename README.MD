@@ -1,12 +1,5 @@
-##SDK介绍
+## SDK简介
 
+## 使用方法
 
-
-##使用方法
-
-- 配置
-gradle.properties
-
-- 初始化
-
-##SDK详解
+## SDK详解

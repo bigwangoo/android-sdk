@@ -39,8 +39,8 @@ dependencies {
     api rootProject.ext.dependencies["support-v4"]
     api rootProject.ext.dependencies["appcompat-v7"]
     api rootProject.ext.dependencies["recyclerview-v7"]
-    api rootProject.ext.dependencies["rxjava"]
-    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["rxjava2"]
+    api rootProject.ext.dependencies["rxandroid2"]
     api rootProject.ext.dependencies["retrofit"]
     api rootProject.ext.dependencies["converter-gson"]
     api rootProject.ext.dependencies["converter-rxjava"]
@@ -48,15 +48,12 @@ dependencies {
     api rootProject.ext.dependencies["easypermissions"]
     api rootProject.ext.dependencies["eventbus3"]
     api rootProject.ext.dependencies["xutils"]
+    api rootProject.ext.dependencies["glide"]
     api rootProject.ext.dependencies["photoview"]
     api rootProject.ext.dependencies["roundedimageview"]
 
-    api rootProject.ext.dependencies["butterknife"]
-    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
-
-    api rootProject.ext.dependencies["glide"]
     implementation rootProject.ext.dependencies["imageloader"]
 
-    compile 'com.google.guava:guava:24.1-android'
+    api 'com.google.guava:guava:24.1-android'
 }
 

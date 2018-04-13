@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 外圆直径 -->
+    <dimen name="glow_pad_view_outer_ring_diameter">270dp</dimen>
+    <!-- 外圆半径 -->
+    <dimen name="glow_pad_view_outer_radius">135dp</dimen>
+    <!-- 内圆半径-->
+    <dimen name="glow_pad_view_inner_radius">15dp</dimen>
+    <!-- 变亮范围圆半径 -->
+    <dimen name="glow_pad_view_glow_radius">75dp</dimen>
+    <!---->
+    <dimen name="glow_pad_view_snap_margin">40dp</dimen>
+    <!---->
+    <dimen name="glow_pad_view_margin_right">0dp</dimen>
+    <!---->
+    <dimen name="glow_pad_view_margin_bottom">-64dp</dimen>
+
+
+</resources>

@@ -4,15 +4,16 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 
-import com.tianxiabuyi.txutils.db.util.LogUtil;
+import org.xutils.common.util.LogUtil;
 
 import java.util.Iterator;
 import java.util.Stack;
 
 /**
- * Created by xjh1994 on 2015/10/25.
+ * 应用程序Activity管理类, 用于Activity管理和应用程序退出
  *
- * @description: 应用程序Activity管理类, 用于Activity管理和应用程序退出
+ * @author xjh1994
+ * @date 2015/10/25
  */
 public class ActivityUtils {
 

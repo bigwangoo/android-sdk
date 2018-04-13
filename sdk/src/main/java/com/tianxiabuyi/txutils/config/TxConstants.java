@@ -1,9 +1,10 @@
 package com.tianxiabuyi.txutils.config;
 
 /**
+ * 医院信息配置
+ *
  * @author xjh1994
  * @date 2016/7/15
- * @description 医院信息配置
  */
 public class TxConstants {
 

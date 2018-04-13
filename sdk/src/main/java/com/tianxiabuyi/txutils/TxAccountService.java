@@ -1,8 +1,9 @@
 package com.tianxiabuyi.txutils;
 
-import com.tianxiabuyi.txutils.db.DbManager;
-import com.tianxiabuyi.txutils.db.ex.DbException;
 import com.tianxiabuyi.txutils.network.model.bean.AccountBean;
+
+import org.xutils.DbManager;
+import org.xutils.ex.DbException;
 
 import java.util.List;
 

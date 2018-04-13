@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.demo.common.ui.view.CleanableEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/apps_sharp_edt_bg_gray"
+        android:drawableLeft="@drawable/ele_ic_search_gray"
+        android:drawablePadding="5dp"
+        android:hint="@string/cus_search_hint"
+        android:maxLines="1"
+        android:singleLine="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="16dp">
+
+        <RelativeLayout
+            android:id="@+id/item_action"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/apps_selector_download_bg"
+            android:gravity="center">
+
+            <FrameLayout
+                android:id="@+id/action_progress"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/action_txt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/action_progress"
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="下载"
+                android:textColor="#ff7a7a7a"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <com.demo.common.ui.view.SpiderView
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+</LinearLayout>

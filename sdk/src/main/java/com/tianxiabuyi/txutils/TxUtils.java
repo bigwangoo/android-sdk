@@ -5,8 +5,6 @@ import android.content.Context;
 import android.os.Environment;
 
 import com.tianxiabuyi.txutils.config.TxConstants;
-import com.tianxiabuyi.txutils.db.DbManager;
-import com.tianxiabuyi.txutils.db.x;
 import com.tianxiabuyi.txutils.imageloader.TxImageLoader;
 import com.tianxiabuyi.txutils.imageloader.universal.UniversalImageLoaderTool;
 import com.tianxiabuyi.txutils.log.LogLevel;
@@ -18,6 +16,9 @@ import com.tianxiabuyi.txutils.network.util.Platform;
 import com.tianxiabuyi.txutils.util.NetUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.log.LoggerInterceptor;
+
+import org.xutils.DbManager;
+import org.xutils.x;
 
 import java.io.File;
 import java.io.IOException;

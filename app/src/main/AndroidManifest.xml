@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wangyd.module">
+    package="com.bigwangoo.sample">
 
     <application
         android:name=".CustomApplication"
@@ -20,6 +20,26 @@
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.StyleActivity" />
 
+
+        <activity android:name="com.txby.sample_kit.demo.AppsActivity" />
+
+        <activity android:name="com.txby.sample_kit.demo.ele.SteepInActivity" />
+        <activity android:name="com.txby.sample_kit.demo.ele.EleHomeActivity" />
+        <activity android:name="com.txby.sample_kit.demo.ele.activity.RefreshActivity" />
+        <activity android:name="com.txby.sample_kit.demo.ele.activity.PullToRefresh2Activity" />
+        <activity android:name="com.txby.sample_kit.demo.ele.activity.LoadingActivity" />
+
+        <activity android:name="com.txby.sample_kit.demo.music.LoadManagerActivity" />
+
+
+        <activity android:name="com.txby.sample_kit.demo.wx.PhotoViewActivity" />
+
+
+        <activity android:name="com.txby.sample_kit.demo.other.CardActivity" />
+        <activity android:name="com.txby.sample_kit.demo.other.CustomViewActivity" />
+        <activity android:name="com.txby.sample_kit.demo.other.ProgressActivity" />
+
+        <activity android:name="com.txby.sample_kit.demo.wx.RedPacketActivity" />
     </application>
 
 </manifest>

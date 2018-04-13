@@ -8,13 +8,13 @@ import com.google.gson.JsonIOException;
 import com.google.gson.JsonParseException;
 import com.tianxiabuyi.txutils.TxUtils;
 import com.tianxiabuyi.txutils.config.TxConstants;
-import com.tianxiabuyi.txutils.db.util.LogUtil;
 import com.tianxiabuyi.txutils.network.exception.TxException;
 import com.tianxiabuyi.txutils.util.ActivityUtils;
 import com.tianxiabuyi.txutils.util.NetUtils;
 import com.tianxiabuyi.txutils.util.ToastUtils;
 
 import org.json.JSONException;
+import org.xutils.common.util.LogUtil;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;

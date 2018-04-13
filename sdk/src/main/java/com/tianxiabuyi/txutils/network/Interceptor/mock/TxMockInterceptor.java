@@ -4,7 +4,8 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.tianxiabuyi.txutils.network.util.MockDataUtils;
-import com.tianxiabuyi.txutils.db.util.LogUtil;
+
+import org.xutils.common.util.LogUtil;
 
 import java.io.IOException;
 
@@ -26,6 +27,7 @@ public class TxMockInterceptor implements Interceptor {
 
     public static final String TAG = TxMockInterceptor.class.getSimpleName();
 
+    @Override
     public Response intercept(Chain chain) throws IOException {
         Response response;
         String path = chain.request().url().uri().getPath();
