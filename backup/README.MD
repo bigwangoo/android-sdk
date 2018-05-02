@@ -1,12 +1,8 @@
-##发布库
+### 发布库
 
-##JCenter
-- 方式一
-    gradlew install
-    gradlew bintrayUpload 参考maven.gradle
-
-- 方式二
-    novoda.gradle
-
-##JitPack
+#### JCenter
+    方法一 参考 maven.gradle
+    方式二 参考 novoda.gradle
+    
+#### JitPack
     参考 jitpack

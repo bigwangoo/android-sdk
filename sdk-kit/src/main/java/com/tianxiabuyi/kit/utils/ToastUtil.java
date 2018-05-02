@@ -1,8 +1,9 @@
-package com.demo.common.utils;
+package com.tianxiabuyi.kit.utils;
 
 import android.widget.Toast;
 
-import com.tianxiabuyi.txbysdk.TxSDK;
+import com.tianxiabuyi.txutils.TxUtils;
+
 
 /**
  * 吐司工具类
@@ -14,7 +15,7 @@ public class ToastUtil {
 
     public static void show(String string) {
         if (toast == null) {
-            toast = Toast.makeText(TxSDK.getContext(), string, Toast.LENGTH_SHORT);
+            toast = Toast.makeText(TxUtils.getInstance().getContext(), string, Toast.LENGTH_SHORT);
         } else {
             toast.setText(string);
             toast.setDuration(Toast.LENGTH_SHORT);
@@ -24,7 +25,7 @@ public class ToastUtil {
 
     public static void showLong(String string) {
         if (toast == null) {
-            toast = Toast.makeText(TxSDK.getContext(), string, Toast.LENGTH_LONG);
+            toast = Toast.makeText(TxUtils.getInstance().getContext(), string, Toast.LENGTH_LONG);
         } else {
             toast.setText(string);
             toast.setDuration(Toast.LENGTH_LONG);

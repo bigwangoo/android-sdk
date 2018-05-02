@@ -10,36 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".common.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.StyleActivity" />
+        <activity android:name=".common.activity.LoginActivity" />
+        <activity android:name=".common.activity.StyleActivity" />
+        <activity android:name=".module.AppsActivity" />
 
-
-        <activity android:name="com.txby.sample_kit.demo.AppsActivity" />
-
-        <activity android:name="com.txby.sample_kit.demo.ele.SteepInActivity" />
-        <activity android:name="com.txby.sample_kit.demo.ele.EleHomeActivity" />
-        <activity android:name="com.txby.sample_kit.demo.ele.activity.RefreshActivity" />
-        <activity android:name="com.txby.sample_kit.demo.ele.activity.PullToRefresh2Activity" />
-        <activity android:name="com.txby.sample_kit.demo.ele.activity.LoadingActivity" />
-
-        <activity android:name="com.txby.sample_kit.demo.music.LoadManagerActivity" />
-
-
-        <activity android:name="com.txby.sample_kit.demo.wx.PhotoViewActivity" />
-
-
-        <activity android:name="com.txby.sample_kit.demo.other.CardActivity" />
-        <activity android:name="com.txby.sample_kit.demo.other.CustomViewActivity" />
-        <activity android:name="com.txby.sample_kit.demo.other.ProgressActivity" />
-
-        <activity android:name="com.txby.sample_kit.demo.wx.RedPacketActivity" />
     </application>
 
 </manifest>

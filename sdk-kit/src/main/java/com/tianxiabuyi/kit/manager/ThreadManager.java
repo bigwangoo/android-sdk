@@ -1,4 +1,4 @@
-package com.demo.common.manager;
+package com.tianxiabuyi.kit.manager;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;

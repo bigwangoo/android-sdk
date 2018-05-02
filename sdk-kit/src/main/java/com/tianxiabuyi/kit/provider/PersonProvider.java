@@ -1,4 +1,4 @@
-package com.demo.common.provider;
+package com.tianxiabuyi.kit.provider;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;

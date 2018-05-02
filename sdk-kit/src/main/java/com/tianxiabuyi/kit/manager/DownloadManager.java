@@ -1,4 +1,4 @@
-package com.demo.common.manager;
+package com.tianxiabuyi.kit.manager;
 
 /**
  * 下载管理

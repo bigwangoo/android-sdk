@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.demo.common.view.glowpad;
+package com.tianxiabuyi.kit.view.glowpad;
 
 import java.util.ArrayList;
 
@@ -101,15 +101,15 @@ public class GlowPadView extends View {
     private static final float RING_SCALE_EXPANDED = 1.0f;
     private static final float RING_SCALE_COLLAPSED = 0.5f;
 
-    private ArrayList<TargetDrawable> mTargetDrawables = new ArrayList<TargetDrawable>();
+    private ArrayList<com.demo.common.view.glowpad.TargetDrawable> mTargetDrawables = new ArrayList<com.demo.common.view.glowpad.TargetDrawable>();
     private AnimationBundle mWaveAnimations = new AnimationBundle();
     private AnimationBundle mTargetAnimations = new AnimationBundle();
     private AnimationBundle mGlowAnimations = new AnimationBundle();
     private ArrayList<String> mTargetDescriptions;
     private ArrayList<String> mDirectionDescriptions;
     private OnTriggerListener mOnTriggerListener;
-    private TargetDrawable mHandleDrawable;
-    private TargetDrawable mOuterRing;
+    private com.demo.common.view.glowpad.TargetDrawable mHandleDrawable;
+    private com.demo.common.view.glowpad.TargetDrawable mOuterRing;
     private Vibrator mVibrator;
 
     private int mFeedbackCount = 3;
@@ -207,7 +207,7 @@ public class GlowPadView extends View {
     private int mGravity = Gravity.TOP;
     private boolean mInitialLayout = true;
     private Tweener mBackgroundAnimator;
-    private PointCloud mPointCloud;
+    private com.demo.common.view.glowpad.PointCloud mPointCloud;
     private float mInnerRadius;
     private int mPointerId;
     private boolean mShowTargetsOnIdle;
@@ -227,10 +227,10 @@ public class GlowPadView extends View {
         mVibrationDuration = a.getInt(R.styleable.GlowPadView_vibrationDuration, mVibrationDuration);
         mFeedbackCount = a.getInt(R.styleable.GlowPadView_feedbackCount, mFeedbackCount);
 
-        mOuterRing = new TargetDrawable(res, getResourceId(a, R.styleable.GlowPadView_outerRingDrawable), 1);
+        mOuterRing = new com.demo.common.view.glowpad.TargetDrawable(res, getResourceId(a, R.styleable.GlowPadView_outerRingDrawable), 1);
         TypedValue handle = a.peekValue(R.styleable.GlowPadView_handleDrawable);
-        mHandleDrawable = new TargetDrawable(res, handle != null ? handle.resourceId : 0, 2);
-        mHandleDrawable.setState(TargetDrawable.STATE_INACTIVE);
+        mHandleDrawable = new com.demo.common.view.glowpad.TargetDrawable(res, handle != null ? handle.resourceId : 0, 2);
+        mHandleDrawable.setState(com.demo.common.view.glowpad.TargetDrawable.STATE_INACTIVE);
 
         mAlwaysTrackFinger = a.getBoolean(R.styleable.GlowPadView_alwaysTrackFinger, false);
 
@@ -274,7 +274,7 @@ public class GlowPadView extends View {
 
         assignDefaultsIfNeeded();
 
-        mPointCloud = new PointCloud(pointDrawable);
+        mPointCloud = new com.demo.common.view.glowpad.PointCloud(pointDrawable);
         mPointCloud.makePointCloud(mInnerRadius, mOuterRadius);
         mPointCloud.glowManager.setRadius(mGlowRadius);
 
@@ -358,7 +358,7 @@ public class GlowPadView extends View {
                 deactivateTargets();
                 hideGlow(0, 0, 0.0f, null);
                 startBackgroundAnimation(0, 0.0f);
-                mHandleDrawable.setState(TargetDrawable.STATE_INACTIVE);
+                mHandleDrawable.setState(com.demo.common.view.glowpad.TargetDrawable.STATE_INACTIVE);
                 mHandleDrawable.setAlpha(1.0f);
                 if (mShowTargetsOnIdle) {
                     showTargets(true);
@@ -425,8 +425,8 @@ public class GlowPadView extends View {
     private void deactivateTargets() {
         final int count = mTargetDrawables.size();
         for (int i = 0; i < count; i++) {
-            TargetDrawable target = mTargetDrawables.get(i);
-            target.setState(TargetDrawable.STATE_INACTIVE);
+            com.demo.common.view.glowpad.TargetDrawable target = mTargetDrawables.get(i);
+            target.setState(com.demo.common.view.glowpad.TargetDrawable.STATE_INACTIVE);
         }
         mActiveTarget = -1;
     }
@@ -480,7 +480,7 @@ public class GlowPadView extends View {
 
     private void highlightSelected(int activeTarget) {
         // Highlight the given target and fade others
-        mTargetDrawables.get(activeTarget).setState(TargetDrawable.STATE_ACTIVE);
+        mTargetDrawables.get(activeTarget).setState(com.demo.common.view.glowpad.TargetDrawable.STATE_ACTIVE);
         hideUnselected(activeTarget);
     }
 
@@ -506,8 +506,8 @@ public class GlowPadView extends View {
 
         final TimeInterpolator interpolator = Ease.Cubic.easeOut;
         for (int i = 0; i < length; i++) {
-            TargetDrawable target = mTargetDrawables.get(i);
-            target.setState(TargetDrawable.STATE_INACTIVE);
+            com.demo.common.view.glowpad.TargetDrawable target = mTargetDrawables.get(i);
+            target.setState(com.demo.common.view.glowpad.TargetDrawable.STATE_INACTIVE);
             mTargetAnimations.add(Tweener.to(target, duration, "ease", interpolator, "alpha", 0.0f, "scaleX", targetScale, "scaleY", targetScale, "delay",
                     delay, "onUpdate", mUpdateListener));
         }
@@ -526,8 +526,8 @@ public class GlowPadView extends View {
         final int duration = animate ? SHOW_ANIMATION_DURATION : 0;
         final int length = mTargetDrawables.size();
         for (int i = 0; i < length; i++) {
-            TargetDrawable target = mTargetDrawables.get(i);
-            target.setState(TargetDrawable.STATE_INACTIVE);
+            com.demo.common.view.glowpad.TargetDrawable target = mTargetDrawables.get(i);
+            target.setState(com.demo.common.view.glowpad.TargetDrawable.STATE_INACTIVE);
             mTargetAnimations.add(Tweener.to(target, duration, "ease", Ease.Cubic.easeOut, "alpha", 1.0f, "scaleX", 1.0f, "scaleY", 1.0f, "delay", delay,
                     "onUpdate", mUpdateListener));
         }
@@ -543,14 +543,14 @@ public class GlowPadView extends View {
         }
     }
 
-    private ArrayList<TargetDrawable> loadDrawableArray(int resourceId) {
+    private ArrayList<com.demo.common.view.glowpad.TargetDrawable> loadDrawableArray(int resourceId) {
         Resources res = getContext().getResources();
         TypedArray array = res.obtainTypedArray(resourceId);
         final int count = array.length();
-        ArrayList<TargetDrawable> drawables = new ArrayList<TargetDrawable>(count);
+        ArrayList<com.demo.common.view.glowpad.TargetDrawable> drawables = new ArrayList<com.demo.common.view.glowpad.TargetDrawable>(count);
         for (int i = 0; i < count; i++) {
             TypedValue value = array.peekValue(i);
-            TargetDrawable target = new TargetDrawable(res, value != null ? value.resourceId : 0, 3);
+            com.demo.common.view.glowpad.TargetDrawable target = new com.demo.common.view.glowpad.TargetDrawable(res, value != null ? value.resourceId : 0, 3);
             drawables.add(target);
         }
         array.recycle();
@@ -558,7 +558,7 @@ public class GlowPadView extends View {
     }
 
     private void internalSetTargetResources(int resourceId) {
-        final ArrayList<TargetDrawable> targets = loadDrawableArray(resourceId);
+        final ArrayList<com.demo.common.view.glowpad.TargetDrawable> targets = loadDrawableArray(resourceId);
         mTargetDrawables = targets;
         mTargetResourceId = resourceId;
 
@@ -566,7 +566,7 @@ public class GlowPadView extends View {
         int maxHeight = mHandleDrawable.getHeight();
         final int count = targets.size();
         for (int i = 0; i < count; i++) {
-            TargetDrawable target = targets.get(i);
+            com.demo.common.view.glowpad.TargetDrawable target = targets.get(i);
             maxWidth = Math.max(maxWidth, target.getWidth());
             maxHeight = Math.max(maxHeight, target.getHeight());
         }
@@ -816,7 +816,7 @@ public class GlowPadView extends View {
     private void handleMove(MotionEvent event) {
         int activeTarget = -1;
         final int historySize = event.getHistorySize();
-        ArrayList<TargetDrawable> targets = mTargetDrawables;
+        ArrayList<com.demo.common.view.glowpad.TargetDrawable> targets = mTargetDrawables;
         int ntargets = targets.size();
         float x = 0.0f;
         float y = 0.0f;
@@ -848,7 +848,7 @@ public class GlowPadView extends View {
                 final float snapDistance2 = snapRadius * snapRadius;
                 // Find first target in range
                 for (int i = 0; i < ntargets; i++) {
-                    TargetDrawable target = targets.get(i);
+                    com.demo.common.view.glowpad.TargetDrawable target = targets.get(i);
 
                     double targetMinRad = (i - 0.5) * 2 * Math.PI / ntargets;
                     double targetMaxRad = (i + 0.5) * 2 * Math.PI / ntargets;
@@ -880,13 +880,13 @@ public class GlowPadView extends View {
         if (mActiveTarget != activeTarget) {
             // Defocus the old target
             if (mActiveTarget != -1) {
-                TargetDrawable target = targets.get(mActiveTarget);
-                target.setState(TargetDrawable.STATE_INACTIVE);
+                com.demo.common.view.glowpad.TargetDrawable target = targets.get(mActiveTarget);
+                target.setState(com.demo.common.view.glowpad.TargetDrawable.STATE_INACTIVE);
             }
             // Focus the new target
             if (activeTarget != -1) {
-                TargetDrawable target = targets.get(activeTarget);
-                target.setState(TargetDrawable.STATE_FOCUSED);
+                com.demo.common.view.glowpad.TargetDrawable target = targets.get(activeTarget);
+                target.setState(com.demo.common.view.glowpad.TargetDrawable.STATE_FOCUSED);
                 final AccessibilityManager accessibilityManager = (AccessibilityManager) getContext().getSystemService(Context.ACCESSIBILITY_SERVICE);
                 // if (accessibilityManager.isEnabled()) {
                 // String targetContentDescription =
@@ -1043,11 +1043,11 @@ public class GlowPadView extends View {
 
     private void updateTargetPositions(float centerX, float centerY) {
         // Reposition the target drawables if the view changed.
-        ArrayList<TargetDrawable> targets = mTargetDrawables;
+        ArrayList<com.demo.common.view.glowpad.TargetDrawable> targets = mTargetDrawables;
         final int size = targets.size();
         final float alpha = (float) (-2.0f * Math.PI / size);
         for (int i = 0; i < size; i++) {
-            final TargetDrawable targetIcon = targets.get(i);
+            final com.demo.common.view.glowpad.TargetDrawable targetIcon = targets.get(i);
             final float angle = alpha * i;
             targetIcon.setPositionX(centerX);
             targetIcon.setPositionY(centerY);
@@ -1066,7 +1066,7 @@ public class GlowPadView extends View {
         mOuterRing.draw(canvas);
         final int ntargets = mTargetDrawables.size();
         for (int i = 0; i < ntargets; i++) {
-            TargetDrawable target = mTargetDrawables.get(i);
+            com.demo.common.view.glowpad.TargetDrawable target = mTargetDrawables.get(i);
             if (target != null) {
                 target.draw(canvas);
             }
@@ -1150,13 +1150,13 @@ public class GlowPadView extends View {
     }
 
     public int getResourceIdForTarget(int index) {
-        final TargetDrawable drawable = mTargetDrawables.get(index);
+        final com.demo.common.view.glowpad.TargetDrawable drawable = mTargetDrawables.get(index);
         return drawable == null ? 0 : drawable.getResourceId();
     }
 
     public void setEnableTarget(int resourceId, boolean enabled) {
         for (int i = 0; i < mTargetDrawables.size(); i++) {
-            final TargetDrawable target = mTargetDrawables.get(i);
+            final com.demo.common.view.glowpad.TargetDrawable target = mTargetDrawables.get(i);
             if (target.getResourceId() == resourceId) {
                 target.setEnabled(enabled);
                 break; // should never be more than one match
@@ -1173,7 +1173,7 @@ public class GlowPadView extends View {
      */
     public int getTargetPosition(int resourceId) {
         for (int i = 0; i < mTargetDrawables.size(); i++) {
-            final TargetDrawable target = mTargetDrawables.get(i);
+            final com.demo.common.view.glowpad.TargetDrawable target = mTargetDrawables.get(i);
             if (target.getResourceId() == resourceId) {
                 return i; // should never be more than one match
             }
@@ -1187,10 +1187,10 @@ public class GlowPadView extends View {
         }
 
         boolean result = false;
-        final ArrayList<TargetDrawable> drawables = mTargetDrawables;
+        final ArrayList<com.demo.common.view.glowpad.TargetDrawable> drawables = mTargetDrawables;
         final int size = drawables.size();
         for (int i = 0; i < size; i++) {
-            final TargetDrawable target = drawables.get(i);
+            final com.demo.common.view.glowpad.TargetDrawable target = drawables.get(i);
             if (target != null && target.getResourceId() == existingResourceId) {
                 target.setDrawable(res, newResourceId);
                 result = true;

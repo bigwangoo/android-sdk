@@ -1,4 +1,4 @@
-package com.demo.common.utils;
+package com.tianxiabuyi.kit.utils;
 
 import android.animation.TimeInterpolator;
 import android.support.v4.view.ViewPager;

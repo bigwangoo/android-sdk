@@ -1,4 +1,4 @@
-package com.demo.common.ui.Fragment;
+package com.tianxiabuyi.kit.ui.Fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

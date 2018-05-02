@@ -1,4 +1,4 @@
-package com.demo.common.utils;
+package com.tianxiabuyi.kit.utils;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -14,7 +14,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
-import com.tianxiabuyi.txbysdk.R;
+import com.tianxiabuyi.kit.R;
+
 
 /**
  * Created by Jaeger on 16/2/14.

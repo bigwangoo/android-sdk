@@ -1,4 +1,4 @@
-package com.demo.common.utils;
+package com.tianxiabuyi.kit.utils;
 
 import java.io.Closeable;
 import java.io.IOException;

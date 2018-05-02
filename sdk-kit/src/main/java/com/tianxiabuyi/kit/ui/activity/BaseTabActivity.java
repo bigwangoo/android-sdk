@@ -1,4 +1,4 @@
-package com.demo.common.ui.activity;
+package com.tianxiabuyi.kit.ui.activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

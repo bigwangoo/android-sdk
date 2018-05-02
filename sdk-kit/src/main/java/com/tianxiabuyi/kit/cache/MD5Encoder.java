@@ -1,4 +1,4 @@
-package com.demo.common.cache;
+package com.tianxiabuyi.kit.cache;
 
 /**
  * Created by YaoDong.Wang on 2017/7/27.

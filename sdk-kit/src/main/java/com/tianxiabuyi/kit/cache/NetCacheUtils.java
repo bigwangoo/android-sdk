@@ -1,4 +1,4 @@
-package com.demo.common.cache;
+package com.tianxiabuyi.kit.cache;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,11 +14,11 @@ import java.net.URL;
  */
 public class NetCacheUtils {
 
-    private LocalCacheUtils mLocalCacheUtils;
+    private com.demo.common.cache.LocalCacheUtils mLocalCacheUtils;
 
-    private MemoryCacheUtils mMemoryCacheUtils;
+    private com.demo.common.cache.MemoryCacheUtils mMemoryCacheUtils;
 
-    public NetCacheUtils(LocalCacheUtils localCacheUtils, MemoryCacheUtils memoryCacheUtils) {
+    public NetCacheUtils(com.demo.common.cache.LocalCacheUtils localCacheUtils, com.demo.common.cache.MemoryCacheUtils memoryCacheUtils) {
         mLocalCacheUtils = localCacheUtils;
         mMemoryCacheUtils = memoryCacheUtils;
     }

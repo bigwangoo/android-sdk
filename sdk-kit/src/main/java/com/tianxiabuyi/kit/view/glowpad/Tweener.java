@@ -14,12 +14,7 @@
  * limitations under the License.
  */
 
-package com.demo.common.view.glowpad;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
+package com.tianxiabuyi.kit.view.glowpad;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
@@ -29,6 +24,11 @@ import android.animation.PropertyValuesHolder;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
 class Tweener {
     private static final String TAG = "Tweener";

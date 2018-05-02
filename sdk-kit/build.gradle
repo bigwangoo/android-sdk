@@ -28,6 +28,11 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':sdk')
 
+    api rootProject.ext.dependencies["FlycoTabLayout_Lib"]
+    api rootProject.ext.dependencies["RecyclerViewHelper"]
+
+    api rootProject.ext.dependencies["activityrouter"]
+    annotationProcessor rootProject.ext.dependencies["activityrouter-compiler"]
     api rootProject.ext.dependencies["butterknife"]
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 }

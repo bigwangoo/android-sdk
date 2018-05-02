@@ -1,12 +1,9 @@
-package com.demo.common.utils;
+package com.tianxiabuyi.kit.utils;
 
 import android.text.TextUtils;
-import android.util.Patterns;
 import android.widget.Toast;
 
-import com.tianxiabuyi.txbysdk.TxSDK;
-
-import java.util.regex.Pattern;
+import com.tianxiabuyi.txutils.TxUtils;
 
 /**
  * 正则工具
@@ -38,10 +35,10 @@ public class RegexUtils {
 
     public static boolean checkMoney(String money) {
         if (TextUtils.isEmpty(money)) {
-            Toast.makeText(TxSDK.getContext(), "金额不能为空", Toast.LENGTH_SHORT).show();
+            Toast.makeText(TxUtils.getInstance().getContext(), "金额不能为空", Toast.LENGTH_SHORT).show();
             return false;
         } else if (!money.matches(REGEX_MONEY)) {
-            Toast.makeText(TxSDK.getContext(), "金额不正确", Toast.LENGTH_SHORT).show();
+            Toast.makeText(TxUtils.getInstance().getContext(), "金额不正确", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

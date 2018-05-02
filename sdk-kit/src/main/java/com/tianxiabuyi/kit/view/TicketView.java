@@ -1,4 +1,4 @@
-package com.demo.common.view;
+package com.tianxiabuyi.kit.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;

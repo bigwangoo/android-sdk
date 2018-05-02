@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.demo.common.view.glowpad;
+package com.tianxiabuyi.kit.view.glowpad;
 
 import android.content.res.Resources;
 import android.graphics.Canvas;

@@ -1,4 +1,4 @@
-package com.demo.common.receiver;
+package com.tianxiabuyi.kit.receiver;
 
 import android.content.Context;
 import android.content.Intent;

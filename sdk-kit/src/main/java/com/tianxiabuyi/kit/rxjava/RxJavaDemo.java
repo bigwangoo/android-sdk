@@ -1,4 +1,4 @@
-package com.demo.common.rxjava;
+package com.tianxiabuyi.kit.rxjava;
 
 import com.orhanobut.logger.Logger;
 
@@ -77,7 +77,6 @@ public class RxJavaDemo {
 
                     @Override
                     public void onNext(String value) {
-                        Logger.d(value);
                         if (value.equals("-1")) {
                             disposable.dispose();
                         }

@@ -1,4 +1,4 @@
-package com.demo.common.cache;
+package com.tianxiabuyi.kit.cache;
 
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;

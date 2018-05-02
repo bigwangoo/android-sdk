@@ -1,4 +1,4 @@
-package com.demo.common.ui.activity;
+package com.tianxiabuyi.kit.ui.activity;
 
 /**
  * ===============================
@@ -8,6 +8,7 @@ package com.demo.common.ui.activity;
  * ===============================
  */
 public class BaseListActivity extends BaseActivity {
+
     @Override
     public int getViewByXml() {
         return 0;

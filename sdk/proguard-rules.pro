@@ -44,6 +44,12 @@
 -optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
 # 保护注解
 -keepattributes *Annotation*
+# 避免混淆泛型
+-keepattributes Signature
+#
+-keepattributes EnclosingMethod
+# 不混淆内部类
+-keepattributes InnerClasses
 # 忽略警告
 -ignorewarning
 
@@ -72,13 +78,9 @@
 -keep public class * extends android.app.backup.BackupAgentHelper
 -keep public class * extends android.preference.Preference
 -keep public class com.android.vending.licensing.ILicensingService
+-keep public class * extends android.support.v4.**
 # 如果引用了v4或者v7包
 -dontwarn android.support.**
--keep public class * extends android.support.v4.**
-# 保持native方法不被混淆
--keepclasseswithmembernames class * {
-    native <methods>;
-}
 # 保留参数是view的方法
 -keepclassmembers class * extends android.app.Activity {
     public void *(android.view.View);
@@ -99,17 +101,8 @@
 -keepclasseswithmembers class * {
     public <init>(android.content.Context, android.util.AttributeSet, int);
 }
-# 保持Parcelable不被混淆
--keep class * implements android.os.Parcelable {
-    public static final android.os.Parcelable$Creator *;
-}
--keepclassmembers class * implements android.os.Parcelable {
-    public <fields>;
-    private <fields>;
-}
 # 保持Serializable不被混淆
 -keepnames class * implements java.io.Serializable
-# 保持Serializable不被混淆并且enum 类也不被混淆
 -keepclassmembers class * implements java.io.Serializable {
     static final long serialVersionUID;
     private static final java.io.ObjectStreamField[] serialPersistentFields;
@@ -121,16 +114,23 @@
     java.lang.Object writeReplace();
     java.lang.Object readResolve();
 }
+# 保持Parcelable不被混淆
+-keep class * implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
+-keepclassmembers class * implements android.os.Parcelable {
+    public <fields>;
+    private <fields>;
+}
 # 保持枚举enum类不被混淆
 -keepclassmembers enum * {
       public static **[] values();
       public static ** valueOf(java.lang.String);
 }
-# 避免混淆泛型
--keepattributes Signature
--keepattributes EnclosingMethod
-# 不混淆内部类
--keepattributes InnerClasses
+# 保持native方法不被混淆
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
 # 不混淆资源类
 -keep class **.R$* { *;}
 -keepclassmembers class **.R$* {

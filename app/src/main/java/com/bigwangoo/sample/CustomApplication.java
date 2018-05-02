@@ -1,6 +1,5 @@
-package com.wangyd.module;
+package com.bigwangoo.sample;
 
-import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
 import com.tianxiabuyi.txutils.TxConfiguration;
@@ -23,7 +22,7 @@ public class CustomApplication extends MultiDexApplication {
 
     public void initTxUtils() {
         TxConfiguration configuration = new TxConfiguration.Builder(this)
-                .mode(Constant.MODE_DEBUG)
+                .mode(com.wangyd.module.Constant.MODE_DEBUG)
                 .baseUrl(Constant.BASE_URL)
                 .appType(Constant.APP_TYPE)
                 .hospitalId(Constant.HOSPITAL)

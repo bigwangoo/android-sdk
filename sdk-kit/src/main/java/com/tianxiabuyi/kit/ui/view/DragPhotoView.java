@@ -1,4 +1,4 @@
-package com.demo.common.ui.view;
+package com.tianxiabuyi.kit.ui.view;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;

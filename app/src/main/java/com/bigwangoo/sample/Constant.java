@@ -1,4 +1,4 @@
-package com.wangyd.module;
+package com.bigwangoo.sample;
 
 /**
  * @author WangYaoDong
