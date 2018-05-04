@@ -1,4 +1,4 @@
-package com.txby.sample_kit.demo.other;
+package com.bigwangoo.sample.module.other;
 
 import android.os.AsyncTask;
 import android.view.View;
@@ -6,11 +6,11 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.demo.apps.R;
-import com.demo.apps.R2;
-import com.demo.common.ui.activity.BaseActivity;
-import com.demo.common.ui.view.ProgressArc;
-import com.demo.common.utils.UIUtils;
+import com.bigwangoo.sample.R;
+import com.tianxiabuyi.kit.R2;
+import com.tianxiabuyi.kit.ui.activity.BaseActivity;
+import com.tianxiabuyi.kit.ui.view.ProgressArc;
+import com.tianxiabuyi.kit.utils.DisplayUtils;
 
 /**
  * 自定义View 界面
@@ -39,11 +39,11 @@ public class CustomViewActivity extends BaseActivity implements View.OnClickList
         // 自定义进度
         progress_layout = (FrameLayout) findViewById(R.id.action_progress);
         progress_downloading = new ProgressArc(this);
-        progress_downloading.setArcDiameter(UIUtils.dip2px(26));
-        progress_downloading.setProgressColor(UIUtils.getColor(R.color.colorAccent));
+        progress_downloading.setArcDiameter(DisplayUtils.dip2px(26));
+        progress_downloading.setProgressColor(DisplayUtils.getColor(R.color.colorAccent));
         progress_downloading.setProgress(0, true);
         progress_downloading.setForegroundResource(R.drawable.ele_ic_search_gray);
-        int size = UIUtils.dip2px(27);
+        int size = DisplayUtils.dip2px(27);
         progress_layout.addView(progress_downloading, new FrameLayout.LayoutParams(size, size));
         progress_txt = (TextView) findViewById(R.id.action_txt);
 
@@ -57,7 +57,7 @@ public class CustomViewActivity extends BaseActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R2.id.item_action:
+            case R.id.item_action:
                 new DownloadTask().execute();
                 break;
         }

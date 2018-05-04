@@ -1,6 +1,8 @@
 package com.bigwangoo.sample.common.manager;
 
 
+import com.tianxiabuyi.kit.utils.FileUtils;
+
 /**
  * description
  *
@@ -31,7 +33,7 @@ public class DownloadInfo {
         downloadInfo.appSize = info.getSize();
         downloadInfo.currentSize = 0;
         downloadInfo.url = info.getDownloadUrl();
-        downloadInfo.path =  com.demo.common.utils.FileUtils.getDownloadDir() + downloadInfo.appName + ".apk";
+        downloadInfo.path = FileUtils.getDownloadDir() + downloadInfo.appName + ".apk";
         downloadInfo.downloadState = DownloadManager.STATE_NONE;
         return downloadInfo;
     }

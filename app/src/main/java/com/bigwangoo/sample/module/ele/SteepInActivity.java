@@ -1,4 +1,5 @@
-package com.txby.sample_kit.demo.ele;
+package com.bigwangoo.sample.module.ele;
+
 
 import android.os.Build;
 import android.os.Bundle;
@@ -6,8 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
-import com.demo.apps.R;
-
+import com.bigwangoo.sample.R;
 
 /**
  * Created by wyd on 2017/5/3.

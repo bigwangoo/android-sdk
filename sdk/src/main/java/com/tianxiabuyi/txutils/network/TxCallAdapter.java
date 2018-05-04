@@ -9,7 +9,7 @@ import retrofit2.CallAdapter;
  * Created by xjh1994 on 2016/8/29.
  */
 
-public class TxCallAdapter implements CallAdapter<TxCall<?>> {
+public class TxCallAdapter<T> implements CallAdapter<TxCall<?>, T> {
 
     private final Type responseType;
 
@@ -23,7 +23,7 @@ public class TxCallAdapter implements CallAdapter<TxCall<?>> {
     }
 
     @Override
-    public <R> TxCall<?> adapt(Call<R> call) {
+    public Object adapt(Call call) {
         return new TxCall<>(call);
     }
 }

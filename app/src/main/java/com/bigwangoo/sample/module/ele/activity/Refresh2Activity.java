@@ -1,4 +1,5 @@
-package com.txby.sample_kit.demo.ele.activity;
+package com.bigwangoo.sample.module.ele.activity;
+
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,20 +8,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import com.demo.apps.R;
-import com.demo.apps.R2;
-import com.txby.sample_kit.demo.ele.adapter.SwipeRefreshAdapter;
-import com.txby.sample_kit.demo.ele.llistener.EndlessRecyclerOnScrollListener;
-import com.demo.common.ui.activity.BaseActivity;
+import com.bigwangoo.sample.R;
+import com.bigwangoo.sample.module.ele.adapter.SwipeRefreshAdapter;
+import com.bigwangoo.sample.module.ele.llistener.EndlessRecyclerOnScrollListener;
+import com.tianxiabuyi.kit.R2;
+import com.tianxiabuyi.kit.ui.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Function;
 
 /**
  * 第二种
@@ -32,9 +30,9 @@ import io.reactivex.functions.Function;
 
 public class Refresh2Activity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
-    @BindView(R2.id.srl)
+    @BindView(R.id.srl)
     SwipeRefreshLayout srl;
-    @BindView(R2.id.rv)
+    @BindView(R.id.rv)
     RecyclerView rv;
     private List<String> mList = new ArrayList<>();
     private SwipeRefreshAdapter adapter;
@@ -86,18 +84,18 @@ public class Refresh2Activity extends BaseActivity implements SwipeRefreshLayout
      * 下拉刷新
      */
     private void doRefresh() {
-        Observable.timer(2, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
-                .map(new Function<Long, Object>() {
-                    @Override
-                    public Object apply(Long aLong) throws Exception {
-                        fetchingNewData();
-
-                        srl.setRefreshing(false);
-                        adapter.notifyDataSetChanged();
-                        Toast.makeText(Refresh2Activity.this, "Refresh Finished!", Toast.LENGTH_SHORT).show();
-                        return null;
-                    }
-                }).subscribe();
+//        Observable.timer(2, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+//                .map(new Function<Long, Object>() {
+//                    @Override
+//                    public Object apply(Long aLong) throws Exception {
+//                        fetchingNewData();
+//
+//                        srl.setRefreshing(false);
+//                        adapter.notifyDataSetChanged();
+//                        Toast.makeText(Refresh2Activity.this, "Refresh Finished!", Toast.LENGTH_SHORT).show();
+//                        return null;
+//                    }
+//                }).subscribe();
     }
 
     private void fetchingNewData() {
@@ -108,17 +106,17 @@ public class Refresh2Activity extends BaseActivity implements SwipeRefreshLayout
      * 上拉加载
      */
     private void simulateLoadMoreData() {
-        Observable.timer(2, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
-                .map(new Function<Long, Object>() {
-                    @Override
-                    public Object apply(Long aLong) throws Exception {
-                        loadMoreData();
-
-                        adapter.notifyDataSetChanged();
-                        Toast.makeText(Refresh2Activity.this, "Load Finished!", Toast.LENGTH_SHORT).show();
-                        return null;
-                    }
-                }).subscribe();
+//        Observable.timer(2, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+//                .map(new Function<Long, Object>() {
+//                    @Override
+//                    public Object apply(Long aLong) throws Exception {
+//                        loadMoreData();
+//
+//                        adapter.notifyDataSetChanged();
+//                        Toast.makeText(Refresh2Activity.this, "Load Finished!", Toast.LENGTH_SHORT).show();
+//                        return null;
+//                    }
+//                }).subscribe();
     }
 
     private void loadMoreData() {

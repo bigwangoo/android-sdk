@@ -1,8 +1,8 @@
-package com.demo.sample;
+package com.bigwangoo.sample.module;
 
-import com.demo.common.common.router.UrlRouter;
 import com.github.mzule.activityrouter.annotation.Module;
 import com.github.mzule.activityrouter.annotation.Modules;
+import com.tianxiabuyi.kit.router.UrlRouter;
 
 /**
  * Created by WangYD on 2017/6/16.

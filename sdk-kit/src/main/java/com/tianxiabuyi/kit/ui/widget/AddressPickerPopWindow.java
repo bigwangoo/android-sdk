@@ -1,9 +1,10 @@
-package com.demo.common.ui.widget;
+package com.tianxiabuyi.kit.ui.widget;
 
 import android.content.Context;
 import android.view.View;
 
-import com.demo.common.R;
+import com.tianxiabuyi.kit.R;
+
 
 /**
  * Created by WangYD on 2017/6/28.

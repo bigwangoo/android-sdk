@@ -16,8 +16,9 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-import com.tianxiabuyi.txbysdk.R;
-import com.demo.common.utils.DisplayUtils;
+import com.tianxiabuyi.kit.R;
+import com.tianxiabuyi.txutils.util.DisplayUtils;
+
 
 /**
  * CardView

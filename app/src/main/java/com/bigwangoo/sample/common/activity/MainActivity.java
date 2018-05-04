@@ -4,15 +4,19 @@ import android.support.v4.app.Fragment;
 
 
 import com.bigwangoo.sample.R;
+import com.bigwangoo.sample.common.fragment.SampleFragment1;
+import com.bigwangoo.sample.common.fragment.SampleFragment2;
+import com.bigwangoo.sample.common.fragment.SampleFragment3;
+import com.tianxiabuyi.kit.ui.activity.BaseTabActivity;
 
 import java.util.ArrayList;
 
-public class MainActivity extends com.demo.common.ui.activity.BaseTabActivity {
+public class MainActivity extends BaseTabActivity {
 
-    private com.demo.sample.fragment.SampleFragment1 fragment1 = new com.demo.sample.fragment.SampleFragment1();
-    private com.demo.sample.fragment.SampleFragment2 fragment2 = new com.demo.sample.fragment.SampleFragment2();
-    private com.demo.sample.fragment.SampleFragment3 fragment3 = new com.demo.sample.fragment.SampleFragment3();
-    private com.demo.sample.fragment.SampleFragment3 fragment4 = new com.demo.sample.fragment.SampleFragment3();
+    private SampleFragment1 fragment1 = new SampleFragment1();
+    private SampleFragment2 fragment2 = new SampleFragment2();
+    private SampleFragment3 fragment3 = new SampleFragment3();
+    private SampleFragment3 fragment4 = new SampleFragment3();
 
     @Override
     protected String[] getTitles() {

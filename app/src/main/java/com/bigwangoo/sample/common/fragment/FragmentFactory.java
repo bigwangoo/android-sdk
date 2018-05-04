@@ -1,4 +1,4 @@
-package com.bigwangoo.sample.module.fragment;
+package com.bigwangoo.sample.common.fragment;
 
 /**
  * Created by wang.yd on 2017/7/12.

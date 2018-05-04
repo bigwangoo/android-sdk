@@ -7,8 +7,9 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.demo.common.ui.activity.BaseActivity;
-import com.demo.sample.R;
+import com.bigwangoo.sample.R;
+import com.tianxiabuyi.kit.ui.activity.BaseActivity;
+
 
 /**
  * 启动页面

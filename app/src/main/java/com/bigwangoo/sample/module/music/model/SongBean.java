@@ -1,4 +1,4 @@
-package com.txby.sample_kit.demo.music.module;
+package com.bigwangoo.sample.module.music.model;
 
 /**
  * Created by YaoDong.Wang on 2017/7/27.

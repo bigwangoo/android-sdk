@@ -1,11 +1,14 @@
-package com.demo.common.utils;
+package com.tianxiabuyi.kit.utils;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
+import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 
@@ -48,14 +51,14 @@ public class DeviceUtils {
         return Build.VERSION.RELEASE;
     }
 
-    public static String getIMEI(Context ctx) {
-        // 获取手机IMEI(需要“android.permission.READ_PHONE_STATE”权限)
-        TelephonyManager tm = (TelephonyManager) ctx.getSystemService(Activity.TELEPHONY_SERVICE);
-        if (tm != null) {
-            return tm.getDeviceId();
-        }
-        return null;
-    }
+//    public static String getIMEI(Context ctx) {
+//        // 获取手机IMEI(需要“android.permission.READ_PHONE_STATE”权限)
+//        TelephonyManager tm = (TelephonyManager) ctx.getSystemService(Activity.TELEPHONY_SERVICE);
+//        if (tm != null) {
+//            return tm.getDeviceId();
+//        }
+//        return null;
+//    }
 
     public static String getCPUInfo() {
         return Build.CPU_ABI;

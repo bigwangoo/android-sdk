@@ -1,7 +1,7 @@
 package com.tianxiabuyi.kit.router;
 
 import com.github.mzule.activityrouter.router.Routers;
-import com.tianxiabuyi.txbysdk.TxSDK;
+import com.tianxiabuyi.txutils.TxUtils;
 
 /**
  * Router
@@ -77,7 +77,7 @@ public class UrlRouter {
     /*******************************************************************************************/
 
     public static void open(String path) {
-        Routers.open(TxSDK.getContext(), PREFIX + path);
+        Routers.open(TxUtils.getInstance().getContext(), PREFIX + path);
     }
 
 }

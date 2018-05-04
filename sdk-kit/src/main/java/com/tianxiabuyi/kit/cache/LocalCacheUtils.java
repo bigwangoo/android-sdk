@@ -1,8 +1,10 @@
-package com.demo.common.cache;
+package com.tianxiabuyi.kit.cache;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
+
+import com.tianxiabuyi.kit.cache.MD5Encoder;
 
 import java.io.File;
 import java.io.FileInputStream;

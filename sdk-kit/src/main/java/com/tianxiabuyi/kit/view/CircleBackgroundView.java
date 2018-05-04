@@ -11,7 +11,8 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.tianxiabuyi.txbysdk.R;
+import com.tianxiabuyi.kit.R;
+
 
 /**
  * 带动画的进度圆环
@@ -147,7 +148,9 @@ public class CircleBackgroundView extends View {
 
     //渐变
     public int getGradient(float fraction, int startColor, int endColor) {
-        if (fraction > 1) fraction = 1;
+        if (fraction > 1) {
+            fraction = 1;
+        }
         int alphaStart = Color.alpha(startColor);
         int redStart = Color.red(startColor);
         int blueStart = Color.blue(startColor);

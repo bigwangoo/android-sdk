@@ -22,8 +22,8 @@ import java.net.UnknownHostException;
 import java.text.ParseException;
 
 import retrofit2.Call;
+import retrofit2.HttpException;
 import retrofit2.Response;
-import retrofit2.adapter.rxjava.HttpException;
 
 /**
  * Created by xjh1994 on 2016/8/18.

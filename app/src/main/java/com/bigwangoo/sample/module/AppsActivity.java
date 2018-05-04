@@ -6,18 +6,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.bigwangoo.sample.R;
+import com.bigwangoo.sample.module.ele.EleHomeActivity;
+import com.bigwangoo.sample.module.ele.activity.LoadingActivity;
+import com.bigwangoo.sample.module.ele.activity.RefreshActivity;
+import com.bigwangoo.sample.module.music.LoadManagerActivity;
+import com.bigwangoo.sample.module.other.ProgressActivity;
+import com.bigwangoo.sample.module.wx.RedPacketActivity;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.tianxiabuyi.kit.R2;
-import com.txby.sample_kit.demo.ele.EleHomeActivity;
-import com.txby.sample_kit.demo.ele.activity.LoadingActivity;
-import com.txby.sample_kit.demo.ele.activity.RefreshActivity;
-import com.txby.sample_kit.demo.music.LoadManagerActivity;
-import com.txby.sample_kit.demo.other.ProgressActivity;
-import com.txby.sample_kit.demo.wx.RedPacketActivity;
-import com.demo.common.common.router.UrlRouter;
-import com.demo.common.ui.activity.BaseActivity;
 import com.github.mzule.activityrouter.annotation.Router;
+import com.tianxiabuyi.kit.R2;
+import com.tianxiabuyi.kit.router.UrlRouter;
+import com.tianxiabuyi.kit.ui.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ import butterknife.BindView;
 @Router(UrlRouter.ACTIVITY_APPS)
 public class AppsActivity extends BaseActivity implements BaseQuickAdapter.OnItemChildClickListener {
 
-    @BindView(R2.id.rv)
+    @BindView(R.id.rv)
     RecyclerView rv;
     private ArrayList<String> mData;
 
@@ -69,17 +69,17 @@ public class AppsActivity extends BaseActivity implements BaseQuickAdapter.OnIte
     @Override
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
         if (position == 0) {
-            EleHomeActivity.newInstance(AppsActivity.this);
+         EleHomeActivity.newInstance(AppsActivity.this);
         } else if (position == 1) {
-            LoadManagerActivity.newInstance(AppsActivity.this);
+             LoadManagerActivity.newInstance(AppsActivity.this);
         } else if (position == 2) {
-            RefreshActivity.newInstance(AppsActivity.this);
+             RefreshActivity.newInstance(AppsActivity.this);
         } else if (position == 3) {
-            LoadingActivity.newInstance(AppsActivity.this);
+             LoadingActivity.newInstance(AppsActivity.this);
         } else if (position == 4) {
-            ProgressActivity.newInstance(AppsActivity.this);
+             ProgressActivity.newInstance(AppsActivity.this);
         } else if (position == 5) {
-            RedPacketActivity.newInstance(AppsActivity.this);
+        RedPacketActivity.newInstance(AppsActivity.this);
         }
     }
 
@@ -92,8 +92,7 @@ public class AppsActivity extends BaseActivity implements BaseQuickAdapter.OnIte
 
         @Override
         protected void convert(BaseViewHolder helper, String item) {
-            helper.setText(R.id.tvClick, item)
-                    .addOnClickListener(R.id.tvClick);
+            helper.setText(R.id.tvClick, item).addOnClickListener(R.id.tvClick);
         }
     }
 

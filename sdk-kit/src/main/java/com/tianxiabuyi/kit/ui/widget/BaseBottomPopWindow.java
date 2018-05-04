@@ -1,4 +1,4 @@
-package com.demo.common.ui.widget;
+package com.tianxiabuyi.kit.ui.widget;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -12,7 +12,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 
-import com.demo.common.R;
+import com.tianxiabuyi.kit.R;
+
 
 /**
  * 底部弹出框

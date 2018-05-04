@@ -2,9 +2,10 @@ package com.bigwangoo.sample.common.adapter;
 
 import android.support.annotation.Nullable;
 
+import com.bigwangoo.sample.R;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.demo.sample.R;
+
 
 import java.util.List;
 

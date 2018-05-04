@@ -1,15 +1,16 @@
-package com.txby.sample_kit.demo.other;
+package com.bigwangoo.sample.module.other;
+
 
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.LinearLayout;
 
+import com.bigwangoo.sample.R;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.demo.apps.R;
-import com.demo.apps.R2;
-import com.demo.common.ui.activity.BaseActivity;
+import com.tianxiabuyi.kit.R2;
+import com.tianxiabuyi.kit.ui.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +22,9 @@ import butterknife.BindView;
  */
 public class CardActivity extends BaseActivity {
 
-    @BindView(R2.id.llCardContent)
+    @BindView(R.id.llCardContent)
     LinearLayout llCardContent;
-    @BindView(R2.id.rvTxtContent)
+    @BindView(R.id.rvTxtContent)
     RecyclerView rvTxtContent;
 
     private CardAdapter mAdapter;

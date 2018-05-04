@@ -1,6 +1,6 @@
-package com.txby.sample_kit.demo.ele.activity;
+package com.bigwangoo.sample.module.ele.activity;
 
-import com.demo.common.ui.activity.BaseActivity;
+import com.tianxiabuyi.kit.ui.activity.BaseActivity;
 
 /**
  * 第一种

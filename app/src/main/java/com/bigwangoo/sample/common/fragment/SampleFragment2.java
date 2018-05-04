@@ -1,14 +1,15 @@
-package com.bigwangoo.sample.module.fragment;
+package com.bigwangoo.sample.common.fragment;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.bigwangoo.sample.R;
+import com.bigwangoo.sample.common.adapter.DiscoverAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.demo.common.common.router.UrlRouter;
-import com.demo.common.ui.Fragment.BaseFragment;
-import com.demo.sample.R;
-import com.demo.sample.adapter.DiscoverAdapter;
+import com.tianxiabuyi.kit.router.UrlRouter;
+import com.tianxiabuyi.kit.ui.Fragment.BaseFragment;
+
 
 import java.util.ArrayList;
 import java.util.List;

@@ -13,7 +13,8 @@ import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 
-import com.demo.common.R;
+import com.tianxiabuyi.kit.R;
+
 
 /**
  * 带清除功能的输入框

@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.tianxiabuyi.txutils.config.TxConstants.TIMEOUT;
@@ -117,7 +117,7 @@ public class TxServiceManager {
                 .baseUrl(TextUtils.isEmpty(url) ? TxUtils.getInstance().getConfiguration().getBaseUrl() : url)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(TxCallAdapterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient)
                 .build();
     }

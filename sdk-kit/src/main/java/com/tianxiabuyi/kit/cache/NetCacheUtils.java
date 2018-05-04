@@ -14,11 +14,11 @@ import java.net.URL;
  */
 public class NetCacheUtils {
 
-    private com.demo.common.cache.LocalCacheUtils mLocalCacheUtils;
+    private LocalCacheUtils mLocalCacheUtils;
 
-    private com.demo.common.cache.MemoryCacheUtils mMemoryCacheUtils;
+    private MemoryCacheUtils mMemoryCacheUtils;
 
-    public NetCacheUtils(com.demo.common.cache.LocalCacheUtils localCacheUtils, com.demo.common.cache.MemoryCacheUtils memoryCacheUtils) {
+    public NetCacheUtils(LocalCacheUtils localCacheUtils, MemoryCacheUtils memoryCacheUtils) {
         mLocalCacheUtils = localCacheUtils;
         mMemoryCacheUtils = memoryCacheUtils;
     }

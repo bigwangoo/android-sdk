@@ -7,7 +7,8 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
-import com.demo.common.utils.UIUtils;
+import com.tianxiabuyi.kit.utils.DisplayUtils;
+
 
 /**
  * 自定义圆形进度条
@@ -54,7 +55,7 @@ public class ProgressArc extends View {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(UIUtils.dip2px(1));
+        mPaint.setStrokeWidth(DisplayUtils.dip2px(1));
 
         mRectF = new RectF();
         mUseCenter = false;
@@ -128,7 +129,7 @@ public class ProgressArc extends View {
             return;
         }
         mForegroundDrawableResId = resId;
-        mForegroundDrawable = UIUtils.getDrawable(mForegroundDrawableResId);
+        mForegroundDrawable = DisplayUtils.getDrawable(mForegroundDrawableResId);
         invalidateSafe();  //刷新界面
     }
 

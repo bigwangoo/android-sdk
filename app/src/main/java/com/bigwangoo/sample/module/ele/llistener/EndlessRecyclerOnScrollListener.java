@@ -1,4 +1,4 @@
-package com.txby.sample_kit.demo.ele.llistener;
+package com.bigwangoo.sample.module.ele.llistener;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

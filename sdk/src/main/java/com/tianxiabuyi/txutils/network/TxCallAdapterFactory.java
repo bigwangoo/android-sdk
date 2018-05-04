@@ -17,8 +17,9 @@ public class TxCallAdapterFactory extends CallAdapter.Factory {
         return new TxCallAdapterFactory();
     }
 
+
     @Override
-    public CallAdapter<?> get(Type returnType, Annotation[] annotations, Retrofit retrofit) {
+    public CallAdapter<?, ?> get(Type returnType, Annotation[] annotations, Retrofit retrofit) {
         Class<?> rawType = getRawType(returnType);
 
         if (rawType == TxCall.class && returnType instanceof ParameterizedType) {

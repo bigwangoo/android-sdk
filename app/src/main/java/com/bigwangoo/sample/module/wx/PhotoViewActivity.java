@@ -1,4 +1,4 @@
-package com.txby.sample_kit.demo.wx;
+package com.bigwangoo.sample.module.wx;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,9 +6,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.demo.apps.R;
-import com.demo.common.ui.activity.BaseActivity;
-import com.demo.common.ui.activity.DragPhotoActivity;
+
+import com.bigwangoo.sample.R;
+import com.tianxiabuyi.kit.ui.activity.BaseActivity;
+import com.tianxiabuyi.kit.ui.activity.DragPhotoActivity;
 
 import java.util.ArrayList;
 

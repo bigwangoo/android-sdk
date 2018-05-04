@@ -1,12 +1,12 @@
-package com.txby.sample_kit.demo.ele.activity;
+package com.bigwangoo.sample.module.ele.activity;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.demo.apps.R;
-import com.demo.apps.R2;
-import com.txby.sample_kit.demo.ele.adapter.RefreshAdapter;
-import com.demo.common.ui.activity.BaseActivity;
+import com.bigwangoo.sample.R;
+import com.bigwangoo.sample.module.ele.adapter.RefreshAdapter;
+import com.tianxiabuyi.kit.R2;
+import com.tianxiabuyi.kit.ui.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import butterknife.BindView;
  */
 public class PullToRefresh2Activity extends BaseActivity {
 
-    @BindView(R2.id.rv)
+    @BindView(R.id.rv)
     RecyclerView mRecyclerView;
 
     private List<String> mData = new ArrayList<>();
@@ -37,7 +37,7 @@ public class PullToRefresh2Activity extends BaseActivity {
 
     @Override
     public void initData() {
-        RefreshAdapter mAdapter = new RefreshAdapter(mData);
+        RefreshAdapter mAdapter = new  RefreshAdapter(mData);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {

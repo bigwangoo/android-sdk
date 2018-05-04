@@ -1,11 +1,12 @@
-package com.bigwangoo.sample.module.fragment;
+package com.bigwangoo.sample.common.fragment;
 
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.demo.common.ui.Fragment.BaseFragment;
-import com.demo.sample.R;
-import com.tianxiabuyi.txbysdk.utils.CacheManagerUtils;
+
+import com.bigwangoo.sample.R;
+import com.tianxiabuyi.kit.ui.Fragment.BaseFragment;
+import com.tianxiabuyi.kit.utils.CacheManagerUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;

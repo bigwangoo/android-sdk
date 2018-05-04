@@ -1,4 +1,4 @@
-package com.bigwangoo.sample.module.model;
+package com.bigwangoo.sample.common.model;
 
 /**
  * eventbus

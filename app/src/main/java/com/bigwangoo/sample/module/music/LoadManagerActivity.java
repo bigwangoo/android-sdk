@@ -1,4 +1,4 @@
-package com.txby.sample_kit.demo.music;
+package com.bigwangoo.sample.module.music;
 
 
 import android.content.Context;
@@ -15,11 +15,10 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.demo.apps.R;
-import com.demo.apps.R2;
-import com.txby.sample_kit.demo.music.adapter.MusicListAdapter;
-import com.txby.sample_kit.demo.music.module.SongBean;
-import com.demo.common.ui.activity.BaseActivity;
+import com.bigwangoo.sample.R;
+import com.bigwangoo.sample.module.music.adapter.MusicListAdapter;
+import com.bigwangoo.sample.module.music.model.SongBean;
+import com.tianxiabuyi.kit.ui.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +30,7 @@ import butterknife.BindView;
  */
 public class LoadManagerActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    @BindView(R2.id.rv)
+    @BindView(R.id.rv)
     RecyclerView rv;
 
     private List<SongBean> mData = new ArrayList<>();

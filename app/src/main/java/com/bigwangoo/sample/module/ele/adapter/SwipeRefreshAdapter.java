@@ -1,11 +1,11 @@
-package com.txby.sample_kit.demo.ele.adapter;
+package com.bigwangoo.sample.module.ele.adapter;
 
-import android.support.annotation.LayoutRes;
+
 import android.support.annotation.Nullable;
 
+import com.bigwangoo.sample.R;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.demo.apps.R;
 
 import java.util.List;
 

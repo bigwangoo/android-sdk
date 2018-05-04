@@ -1,4 +1,4 @@
-package com.demo.common.utils;
+package com.tianxiabuyi.kit.utils;
 
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -18,7 +18,7 @@ public class DrawableUtils {
      */
     public static GradientDrawable createShape(int color) {
         GradientDrawable drawable = new GradientDrawable();
-        drawable.setCornerRadius(UIUtils.dip2px(5));//设置4个角的弧度
+        drawable.setCornerRadius(DisplayUtils.dip2px(5));//设置4个角的弧度
         drawable.setColor(color);// 设置颜色
         return drawable;
     }

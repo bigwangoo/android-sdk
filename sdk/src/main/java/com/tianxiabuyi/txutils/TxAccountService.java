@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class TxAccountService {
 
-    private static DbManager db = TxUtils.getDb();
+    private static DbManager db = TxUtils.getInstance().getDb();
 
     /**
      * 获取本地所有第三方账号

@@ -4,6 +4,10 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Environment;
 
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.FormatStrategy;
+import com.orhanobut.logger.Logger;
+import com.orhanobut.logger.PrettyFormatStrategy;
 import com.tianxiabuyi.txutils.config.TxConstants;
 import com.tianxiabuyi.txutils.imageloader.TxImageLoader;
 import com.tianxiabuyi.txutils.imageloader.universal.UniversalImageLoaderTool;
@@ -13,11 +17,13 @@ import com.tianxiabuyi.txutils.network.Interceptor.TxInterceptor;
 import com.tianxiabuyi.txutils.network.Interceptor.log.TxLoggerInterceptor;
 import com.tianxiabuyi.txutils.network.Interceptor.mock.TxMockInterceptor;
 import com.tianxiabuyi.txutils.network.util.Platform;
+import com.tianxiabuyi.txutils.util.AppUtils;
 import com.tianxiabuyi.txutils.util.NetUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.log.LoggerInterceptor;
 
 import org.xutils.DbManager;
+import org.xutils.ex.DbException;
 import org.xutils.x;
 
 import java.io.File;
@@ -30,7 +36,6 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-
 
 /**
  * @author xjh1994
@@ -71,10 +76,19 @@ public class TxUtils {
 
         //TxLog
         if (configuration.mode) {
-            TxLog.init().logLevel(LogLevel.FULL);
+            TxLog.init(TAG).logLevel(LogLevel.FULL);
         } else {
-            TxLog.init().logLevel(LogLevel.NONE);
+            TxLog.init(TAG).logLevel(LogLevel.NONE);
         }
+
+        //logger
+        FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
+                .showThreadInfo(false)
+                .methodCount(0)
+                .methodOffset(7)
+                .tag(TAG)
+                .build();
+        Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
 
         //okHttp
         if (configuration.okhttpBuilder == null) {
@@ -114,7 +128,7 @@ public class TxUtils {
     }
 
     /**
-     * 缓存
+     * 缓存, 需要申请权限
      */
     private void addCacheInterceptor(OkHttpClient.Builder okHttpBuilder) {
         String cacheDir;
@@ -174,6 +188,7 @@ public class TxUtils {
         okHttpBuilder.retryOnConnectionFailure(true);
     }
 
+
     public Context getContext() {
         return mConfiguration.context;
     }
@@ -193,10 +208,10 @@ public class TxUtils {
     /**
      * xUtils数据库
      */
-    public static DbManager getDb() {
+    public DbManager getDb() {
         DbManager.DaoConfig daoConfig = new DbManager.DaoConfig()
                 .setDbName(TxConstants.DB_NAME)
-                .setDbVersion(1)
+                .setDbVersion(AppUtils.getVersionCode(getContext()))
                 .setDbOpenListener(new DbManager.DbOpenListener() {
                     @Override
                     public void onDbOpened(DbManager db) {
@@ -207,7 +222,12 @@ public class TxUtils {
                 .setDbUpgradeListener(new DbManager.DbUpgradeListener() {
                     @Override
                     public void onUpgrade(DbManager db, int oldVersion, int newVersion) {
-                        // 数据库更新
+                        // 数据库更新, 默认删除数据库
+                        try {
+                            db.dropDb();
+                        } catch (DbException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
         return x.getDb(daoConfig);

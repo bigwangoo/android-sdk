@@ -2,11 +2,8 @@ package com.bigwangoo.sample.common.manager;
 
 import android.content.Intent;
 
-import com.tianxiabuyi.txutils.TxUtils;
-import com.tianxiabuyi.txutils.manager.ThreadManager;
-import com.tianxiabuyi.txutils.util.FileProvider7;
-import com.wangyd.module.manager.AppInfo;
-import com.wangyd.module.manager.DownloadInfo;
+
+import com.tianxiabuyi.kit.manager.ThreadManager;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -94,7 +91,7 @@ public class DownloadManager {
             notifyDownloadStateChanged(info);
             DownloadTask task = new DownloadTask(info);
             mTaskMap.put(info.getId(), task);
-            ThreadManager.creatDownLoadPool().execute(task);
+            //ThreadManager.creatDownLoadPool().execute(task);
         }
     }
 
@@ -110,9 +107,9 @@ public class DownloadManager {
             File apk = new File(info.getPath());
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            FileProvider7.setIntentDataAndType(TxUtils.getInstance().getContext(), intent,
-                    "application/vnd.android.package-archive", apk, true);
-            TxUtils.getInstance().getContext().startActivity(intent);
+//            FileProvider7.setIntentDataAndType(TxUtils.getInstance().getContext(), intent,
+//                    "application/vnd.android.package-archive", apk, true);
+//            TxUtils.getInstance().getContext().startActivity(intent);
         }
         notifyDownloadStateChanged(info);
     }

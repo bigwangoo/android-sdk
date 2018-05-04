@@ -7,9 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 
-import com.demo.common.R;
-import com.demo.common.ui.view.DragPhotoView;
-import com.demo.common.ui.view.ViewPagerFixMulti;
+
+import com.tianxiabuyi.kit.R;
+import com.tianxiabuyi.kit.ui.view.DragPhotoView;
+import com.tianxiabuyi.kit.ui.view.ViewPagerFixMulti;
 
 import java.util.List;
 

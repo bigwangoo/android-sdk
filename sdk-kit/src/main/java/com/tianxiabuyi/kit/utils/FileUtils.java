@@ -2,6 +2,8 @@ package com.tianxiabuyi.kit.utils;
 
 import android.os.Environment;
 
+import com.tianxiabuyi.txutils.TxUtils;
+
 import java.io.File;
 
 /**
@@ -97,7 +99,7 @@ public class FileUtils {
      * 返回cache路径  //另一个路径是： getFileDir
      */
     private static String getCachePath() {
-        File file = UIUtils.getContext().getCacheDir();
+        File file = TxUtils.getInstance().getContext().getCacheDir();
         return file.getAbsolutePath() + File.separator;
     }
 

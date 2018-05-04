@@ -1,14 +1,14 @@
-package com.txby.sample_kit.demo.other;
+package com.bigwangoo.sample.module.other;
 
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.EditText;
 
-import com.demo.apps.R;
-import com.demo.apps.R2;
-import com.demo.common.receiver.SmsContentObserver;
-import com.demo.common.ui.activity.BaseActivity;
+import com.bigwangoo.sample.R;
+import com.tianxiabuyi.kit.R2;
+import com.tianxiabuyi.kit.receiver.SmsContentObserver;
+import com.tianxiabuyi.kit.ui.activity.BaseActivity;
 
 import butterknife.BindView;
 
@@ -17,7 +17,7 @@ import butterknife.BindView;
  */
 
 public class SmsActivity extends BaseActivity {
-    @BindView(R2.id.tv_code)
+    @BindView(R.id.tv_code)
     EditText mTvCode;
 
     private SmsContentObserver mSmsContentObserver;

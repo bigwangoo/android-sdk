@@ -1,10 +1,11 @@
-package com.txby.sample_kit.demo.ele.activity;
+package com.bigwangoo.sample.module.ele.activity;
 
 import android.content.Context;
 import android.content.Intent;
 
-import com.demo.apps.R;
-import com.demo.common.ui.activity.BaseActivity;
+import com.bigwangoo.sample.R;
+import com.tianxiabuyi.kit.ui.activity.BaseActivity;
+
 
 /**
  * Created by wangyd on 2017/8/5.

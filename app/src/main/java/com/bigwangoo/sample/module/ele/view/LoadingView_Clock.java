@@ -1,4 +1,4 @@
-package com.txby.sample_kit.demo.ele.view;
+package com.bigwangoo.sample.module.ele.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -7,7 +7,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.demo.common.utils.DisplayUtils;
+import com.tianxiabuyi.kit.utils.DisplayUtils;
 
 
 /**

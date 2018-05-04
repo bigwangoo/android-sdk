@@ -1,4 +1,4 @@
-package com.demo.common.permission;
+package com.tianxiabuyi.kit.permission;
 
 /**
  * 权限演示

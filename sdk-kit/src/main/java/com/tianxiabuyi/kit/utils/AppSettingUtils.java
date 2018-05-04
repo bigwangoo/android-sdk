@@ -1,4 +1,4 @@
-package com.tianxiabuyi.kit.view.glowpad;
+package com.tianxiabuyi.kit.utils;
 
 import android.content.Context;
 import android.content.Intent;

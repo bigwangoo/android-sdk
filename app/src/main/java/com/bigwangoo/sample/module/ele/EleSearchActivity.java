@@ -1,4 +1,5 @@
-package com.txby.sample_kit.demo.ele;
+package com.bigwangoo.sample.module.ele;
+
 
 import android.animation.ValueAnimator;
 import android.view.ViewGroup;
@@ -7,9 +8,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.demo.apps.R;
-import com.demo.apps.R2;
-import com.demo.common.ui.activity.BaseActivity;
+import com.bigwangoo.sample.R;
+import com.tianxiabuyi.kit.R2;
+import com.tianxiabuyi.kit.ui.activity.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -19,20 +20,20 @@ import butterknife.OnClick;
  */
 public class EleSearchActivity extends BaseActivity {
 
-    @BindView(R2.id.rl_title)
+    @BindView(R.id.rl_title)
     RelativeLayout mRlSearchTitle;
-    @BindView(R2.id.rl_search_content)
+    @BindView(R.id.rl_search_content)
     RelativeLayout mRlSearchContent;
-    @BindView(R2.id.tv_location)
+    @BindView(R.id.tv_location)
     TextView mTvLocation;
-    @BindView(R2.id.tvRecommend)
+    @BindView(R.id.tvRecommend)
     TextView mTvRecommend;
 
-    @BindView(R2.id.iv_back)
+    @BindView(R.id.iv_back)
     ImageView mIvBack;
-    @BindView(R2.id.tv_search)
+    @BindView(R.id.tv_search)
     TextView mTvSearch;
-    @BindView(R2.id.fl_content)
+    @BindView(R.id.fl_content)
     TextView mFlResult;
 
     float frameBgHeight = 0;
@@ -61,7 +62,7 @@ public class EleSearchActivity extends BaseActivity {
 
     }
 
-    @OnClick(R2.id.iv_back)
+    @OnClick(R.id.iv_back)
     public void onClick() {
         onBackPressed();
     }

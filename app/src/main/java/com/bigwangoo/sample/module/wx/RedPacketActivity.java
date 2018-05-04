@@ -1,4 +1,4 @@
-package com.txby.sample_kit.demo.wx;
+package com.bigwangoo.sample.module.wx;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,9 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.demo.apps.R;
-import com.demo.apps.R2;
-import com.demo.common.ui.activity.BaseActivity;
+import com.bigwangoo.sample.R;
+import com.tianxiabuyi.kit.R2;
+import com.tianxiabuyi.kit.ui.activity.BaseActivity;
 
 import butterknife.BindView;
 
@@ -21,9 +21,9 @@ import butterknife.BindView;
 public class RedPacketActivity extends BaseActivity {
     //Collections.reverse(mData);
 
-    @BindView(R2.id.tv_hint)
+    @BindView(R.id.tv_hint)
     TextView tvHint;
-    @BindView(R2.id.edt_text)
+    @BindView(R.id.edt_text)
     EditText edtText;
 
     final double maxMoney = 999;

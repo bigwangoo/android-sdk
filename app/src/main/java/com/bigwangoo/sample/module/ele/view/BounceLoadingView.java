@@ -1,4 +1,4 @@
-package com.txby.sample_kit.demo.ele.view;
+package com.bigwangoo.sample.module.ele.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
