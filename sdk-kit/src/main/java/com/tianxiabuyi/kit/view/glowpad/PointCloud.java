@@ -134,7 +134,7 @@ public class PointCloud {
 
     public void draw(Canvas canvas) {
         ArrayList<Point> points = mPointCloud;
-        canvas.save(Canvas.ALL_SAVE_FLAG);
+//        canvas.save(Canvas.ALL_SAVE_FLAG);
         canvas.scale(mScale, mScale, mCenterX, mCenterY);
         for (int i = 0; i < points.size(); i++) {
             Point point = points.get(i);
@@ -143,10 +143,12 @@ public class PointCloud {
             final float py = point.y + mCenterY;
             int alpha = getAlphaForPoint(point);
 
-            if (alpha == 0) continue;
+            if (alpha == 0) {
+                continue;
+            }
 
             if (mDrawable != null) {
-                canvas.save(Canvas.ALL_SAVE_FLAG);
+//                canvas.save(Canvas.ALL_SAVE_FLAG);
                 final float cx = mDrawable.getIntrinsicWidth() * 0.5f;
                 final float cy = mDrawable.getIntrinsicHeight() * 0.5f;
                 final float s = pointSize / MAX_POINT_SIZE;

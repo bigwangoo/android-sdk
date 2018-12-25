@@ -25,17 +25,15 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-
-    implementation project(':sdk')
-    api rootProject.ext.dependencies["design"]
-    api rootProject.ext.dependencies["constraint"]
-
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api project(':sdk')
+    api rootProject.ext.dependencies["FlycoTabLayout_Lib"]
+    api rootProject.ext.dependencies["RecyclerViewHelper"]
     api rootProject.ext.dependencies["activityrouter"]
     annotationProcessor rootProject.ext.dependencies["activityrouter-compiler"]
     api rootProject.ext.dependencies["butterknife"]
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
-    api rootProject.ext.dependencies["FlycoTabLayout_Lib"]
-    api rootProject.ext.dependencies["RecyclerViewHelper"]
+    implementation rootProject.ext.dependencies["design"]
+    implementation rootProject.ext.dependencies["constraint"]
 }

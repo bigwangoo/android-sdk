@@ -2,7 +2,6 @@ package com.bigwangoo.sample.common.activity;
 
 import android.support.v4.app.Fragment;
 
-
 import com.bigwangoo.sample.R;
 import com.bigwangoo.sample.common.fragment.SampleFragment1;
 import com.bigwangoo.sample.common.fragment.SampleFragment2;
@@ -52,7 +51,6 @@ public class MainActivity extends BaseTabActivity {
         fragments.add(fragment4);
         return fragments;
     }
-
 }
 
 

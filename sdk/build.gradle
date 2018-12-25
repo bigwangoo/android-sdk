@@ -9,13 +9,12 @@ android {
         targetSdkVersion rootProject.ext.versions['targetSdkVersion']
         versionCode 1
         versionName "1.0.0"
-
-        buildConfigField "String", "appKey", "\"ilove\""
-
         ndk {
             moduleName "KeyUtils"
             abiFilters "armeabi", "armeabi-v7a", "x86", "x86_64"
         }
+
+        buildConfigField "String", "appKey", "\"ilove\""
     }
     buildTypes {
         release {
@@ -35,11 +34,7 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    // 需要 app选择添加
-    implementation rootProject.ext.dependencies["support-v4"]
-    implementation rootProject.ext.dependencies["appcompat-v7"]
-    implementation rootProject.ext.dependencies["recyclerview-v7"]
-
+    api 'com.google.guava:guava:24.1-android'
     api rootProject.ext.dependencies["rxjava2"]
     api rootProject.ext.dependencies["rxandroid2"]
     api rootProject.ext.dependencies["retrofit"]
@@ -55,7 +50,8 @@ dependencies {
     api rootProject.ext.dependencies["roundedimageview"]
 
     implementation rootProject.ext.dependencies["imageloader"]
-
-    api 'com.google.guava:guava:24.1-android'
+    implementation rootProject.ext.dependencies["support-v4"]
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    implementation rootProject.ext.dependencies["recyclerview-v7"]
 }
 

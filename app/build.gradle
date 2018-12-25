@@ -66,17 +66,6 @@ android {
                     }
                 }
             }
-            applicationVariants.all { variant ->
-                variant.outputs.all { output ->
-                    def outputFile = output.outputFile
-                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                        outputFileName = "${app_name}_${app_type}" +
-                                "_v${defaultConfig.versionName}" +
-                                "_${defaultConfig.versionCode}" +
-                                "_${variant.buildType.name}_" + getDate() + ".apk"
-                    }
-                }
-            }
         }
         debug {
             // versionNameSuffix '-debug'
@@ -86,7 +75,17 @@ android {
             signingConfig signingConfigs.release
         }
     }
-
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                outputFileName = "${app_name}_${app_type}" +
+                        "_v${defaultConfig.versionName}" +
+                        "_${defaultConfig.versionCode}" +
+                        "_${variant.buildType.name}_" + getDate() + ".apk"
+            }
+        }
+    }
     // channels walle
 
     lintOptions {

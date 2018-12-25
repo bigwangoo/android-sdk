@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.bigwangoo.sample">
 
     <application
-        android:name=".CustomApplication"
+        android:name=".CusApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".common.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +22,7 @@
         <activity android:name=".common.activity.LoginActivity" />
         <activity android:name=".common.activity.StyleActivity" />
         <activity android:name=".module.AppsActivity" />
+        <activity android:name=".module.db.DbActivity" />
 
     </application>
 
