@@ -28,7 +28,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/ele_ic_back_white" />
+            android:src="@mipmap/ele_ic_back_white" />
 
         <TextView
             android:id="@+id/tv_search"
@@ -52,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:drawableLeft="@drawable/ele_ic_search"
+                android:drawableLeft="@mipmap/ele_ic_search"
                 android:gravity="center"
                 android:hint="搜索商家,商品名称"
                 android:textColorHint="#535253"

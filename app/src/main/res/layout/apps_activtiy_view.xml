@@ -4,19 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.demo.common.ui.view.CleanableEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/apps_sharp_edt_bg_gray"
-        android:drawableLeft="@drawable/ele_ic_search_gray"
-        android:drawablePadding="5dp"
-        android:hint="@string/cus_search_hint"
-        android:maxLines="1"
-        android:singleLine="true" />
 
     <RelativeLayout
         android:layout_width="match_parent"

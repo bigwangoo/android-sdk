@@ -22,22 +22,20 @@ android {
         targetSdkVersion rootProject.ext.versions['targetSdkVersion']
         versionCode rootProject.ext.versions['versionCode']
         versionName rootProject.ext.versions['versionName']
+        multiDexEnabled true
+        multiDexKeepProguard file('keep_in_main_dex.pro')
 
         ndk {
             abiFilters "armeabi", "x86"
         }
-        multiDexEnabled true
-        multiDexKeepProguard file('keep_in_main_dex.pro')
 
         resValue("string", "app_name", app_name)
-
         buildConfigField("String", "THEME", project.THEME)
         buildConfigField("String", "APP_TYPE", project.APP_TYPE)
         buildConfigField("String", "HOSPITAL", project.HOSPITAL)
         buildConfigField("String", "USER_TYPE", project.USER_TYPE)
         buildConfigField("String", "BASE_URL", project.BASE_URL)
         buildConfigField("String", "PROTOCOL_URL", protocol_url)
-
         buildConfigField("String", "AMAP_APP_ID", project.AMAP_APP_ID)
         buildConfigField("String", "BUGLY_APP_ID", project.BUGLY_APP_ID)
 
@@ -118,8 +116,11 @@ dependencies {
     implementation rootProject.ext.dependencies["constraint"]
     implementation rootProject.ext.dependencies["eventbus3"]
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    api rootProject.ext.dependencies["activityrouter"]
+    annotationProcessor rootProject.ext.dependencies["activityrouter-compiler"]
 
-    implementation project(':sdk-kit')
+    implementation project(':txutils')
+    implementation project(':txutils_ui')
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

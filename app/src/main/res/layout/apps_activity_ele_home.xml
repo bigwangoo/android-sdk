@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:drawableLeft="@drawable/ele_ic_search"
+                android:drawableLeft="@mipmap/ele_ic_search"
                 android:gravity="center"
                 android:hint="搜索商家,商品名称"
                 android:textColorHint="#535253"

@@ -10,17 +10,7 @@
         android:layout_height="match_parent"
         android:background="@android:color/white">
 
-        <com.demo.common.view.CircleBackgroundView
-            android:layout_width="320dp"
-            android:layout_height="320dp"
-            android:layout_centerHorizontal="true"
-            app:pr_bg_end_color="#00ffffff"
-            app:pr_bg_mid_color="#33ffffff"
-            app:pr_bg_start_color="#00ffffff"
-            app:pr_progress="80"
-            app:pr_progress_end_color="#D9B262"
-            app:pr_progress_start_color="#00ffffff"
-            app:pr_progress_width="8dp" />
+
     </RelativeLayout>
 
     <TextView

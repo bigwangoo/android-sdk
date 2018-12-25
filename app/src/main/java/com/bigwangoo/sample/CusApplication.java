@@ -4,11 +4,9 @@ import android.content.Context;
 import android.net.Uri;
 import android.support.multidex.MultiDexApplication;
 
-import com.bigwangoo.sample.common.activity.LoginActivity;
 import com.github.mzule.activityrouter.router.RouterCallback;
 import com.github.mzule.activityrouter.router.RouterCallbackProvider;
 import com.github.mzule.activityrouter.router.SimpleRouterCallback;
-import com.tianxiabuyi.kit.utils.ToastUtil;
 import com.tianxiabuyi.txutils.TxConfiguration;
 import com.tianxiabuyi.txutils.TxUtils;
 import com.tianxiabuyi.txutils.imageloader.glide.GlideImageLoaderProvider;
@@ -31,7 +29,7 @@ public class CusApplication extends MultiDexApplication implements RouterCallbac
                 .baseUrl(Constant.BASE_URL)
                 .appType(Constant.APP_TYPE)
                 .hospitalId(Constant.HOSPITAL)
-                .loginClass(LoginActivity.class)
+//                .loginClass(LoginActivity.class)
                 .imageLoader(new GlideImageLoaderProvider())
                 .colorPrimary(R.color.colorPrimary)
                 .isCacheOn(true)
@@ -67,7 +65,7 @@ public class CusApplication extends MultiDexApplication implements RouterCallbac
 
             @Override
             public void notFound(Context context, Uri uri) {
-                ToastUtil.show("模块正在建设中...");
+               // ToastUtil.show("模块正在建设中...");
             }
         };
     }
