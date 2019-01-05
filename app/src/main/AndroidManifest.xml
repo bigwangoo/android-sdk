@@ -23,6 +23,7 @@
         <activity android:name=".common.activity.StyleActivity" />
         <activity android:name=".module.AppsActivity" />
         <activity android:name=".module.db.DbActivity" />
+        <activity android:name=".module.greendao.activity.GreenDaoActivity" />
 
     </application>
 

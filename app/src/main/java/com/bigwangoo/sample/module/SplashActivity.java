@@ -1,4 +1,4 @@
-package com.bigwangoo.sample;
+package com.bigwangoo.sample.module;
 
 import android.os.Build;
 import android.os.Bundle;

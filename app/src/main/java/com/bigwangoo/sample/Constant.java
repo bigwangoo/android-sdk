@@ -1,11 +1,20 @@
 package com.bigwangoo.sample;
 
+import com.zhy.http.okhttp.request.OkHttpRequest;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+
 /**
  * @author WangYaoDong
  * @date 2018/2/26 17:39
  * @description TODO
  */
 public class Constant {
+
+    static {
+
+    }
 
     /**
      * INFO

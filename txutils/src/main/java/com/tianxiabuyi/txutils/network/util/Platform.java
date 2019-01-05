@@ -13,11 +13,6 @@ import java.util.concurrent.Executors;
 public class Platform {
     private static final Platform PLATFORM = findPlatform();
 
-    public static Platform get() {
-        // TxLog.e(PLATFORM.getClass().toString());
-        return PLATFORM;
-    }
-
     private static Platform findPlatform() {
         try {
             Class.forName("android.os.Build");
@@ -29,12 +24,17 @@ public class Platform {
         return new Platform();
     }
 
-    public Executor defaultCallbackExecutor() {
-        return Executors.newCachedThreadPool();
+    public static Platform get() {
+        // TxLog.e(PLATFORM.getClass().toString());
+        return PLATFORM;
     }
 
     public void execute(Runnable runnable) {
         defaultCallbackExecutor().execute(runnable);
+    }
+
+    public Executor defaultCallbackExecutor() {
+        return Executors.newCachedThreadPool();
     }
 
     static class Android extends Platform {
