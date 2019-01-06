@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tianxiabuyi.txutils.ui.base.impl.IBaseTxFragment;
+import com.tianxiabuyi.txutils.ui.base.IBaseTxFragment;
 import com.tianxiabuyi.txutils.network.TxCall;
 import com.tianxiabuyi.txutils.network.exception.TxException;
 import com.tianxiabuyi.txutils.util.ToastUtils;

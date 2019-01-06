@@ -1,4 +1,4 @@
-package com.tianxiabuyi.txutils.network.callback;
+package com.tianxiabuyi.txutils.network.callback.impl;
 
 import android.app.ProgressDialog;
 import android.content.Context;

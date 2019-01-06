@@ -20,7 +20,7 @@ import com.tianxiabuyi.txutils.R;
 import com.tianxiabuyi.txutils.manager.TxFileManager;
 import com.tianxiabuyi.txutils.manager.TxUpdateManager;
 import com.tianxiabuyi.txutils.TxUtils;
-import com.tianxiabuyi.txutils.network.callback.inter.FileResponseCallback;
+import com.tianxiabuyi.txutils.network.callback.FileResponseCallback;
 import com.tianxiabuyi.txutils.network.exception.TxException;
 import com.tianxiabuyi.txutils.network.model.TxUpdateResult;
 import com.tianxiabuyi.txutils.network.util.TxLog;

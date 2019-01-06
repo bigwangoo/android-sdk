@@ -3,7 +3,7 @@ package com.tianxiabuyi.txutils.network;
 import android.support.annotation.NonNull;
 
 import com.tianxiabuyi.txutils.TxUtils;
-import com.tianxiabuyi.txutils.network.callback.inter.TxCallback;
+import com.tianxiabuyi.txutils.network.callback.TxCallback;
 import com.tianxiabuyi.txutils.network.util.Platform;
 
 import java.io.IOException;

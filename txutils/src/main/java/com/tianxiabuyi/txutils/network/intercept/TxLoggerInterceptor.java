@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.tianxiabuyi.txutils.network.util.TxLog;
-import com.tianxiabuyi.txutils.util.EncryptUtils;
 
 import java.io.IOException;
 
@@ -24,9 +23,8 @@ import okio.Buffer;
  * @description 网络请求 日志打印拦截器 (加密请求)
  */
 public class TxLoggerInterceptor implements Interceptor {
-    private static final String TAG = "TxUtils";
-    private static final String KEY_JSON = "json";
 
+    private static final String TAG = "TxUtils";
     private String tag;
     private boolean showLog;
 
@@ -68,9 +66,6 @@ public class TxLoggerInterceptor implements Interceptor {
             Log.e(tag, "method : " + request.method());
             Log.e(tag, "mUrl : " + request.url().toString());
             Log.e(tag, "tag : " + request.tag());
-            //解密json
-            String url = EncryptUtils.decryptStr(request.url().queryParameter(KEY_JSON));
-            Log.e(tag, "json : " + "json=" + url);
             // header
             Headers headers = request.headers();
             if (headers != null && headers.size() > 0) {
@@ -119,20 +114,15 @@ public class TxLoggerInterceptor implements Interceptor {
                     Log.e(tag, "responseBody's contentType : " + mediaType.toString());
                     if (isText(mediaType)) {
                         String resp = body.string();
-
                         if (!clone.isSuccessful()) {
                             TxLog.e(tag, "responseBody's content : " + resp);
                         } else {
-                            if (resp.contains("errcode")) {
-                                TxLog.e(tag, "responseBody's content : " + resp);
-                            } else {
-                                TxLog.e(tag, "responseBody's content : " + EncryptUtils.decryptStr(resp));
-                            }
+                            TxLog.e(tag, "responseBody's content : " + resp);
                         }
-                        body = ResponseBody.create(mediaType, resp);
                         Log.e(tag, "========response'log=======end");
-
+                        body = ResponseBody.create(mediaType, resp);
                         return response.newBuilder().body(body).build();
+
                     } else {
                         Log.e(tag, "responseBody's content : " + " maybe [file part] , too large too print , ignored!");
                     }

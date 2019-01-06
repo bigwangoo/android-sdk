@@ -48,14 +48,15 @@ dependencies {
     api 'commons-codec:commons-codec:1.10'
 
     // 网络
-    api rootProject.ext.dependencies["rxjava"]
-    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["rxjava2"]
+    api rootProject.ext.dependencies["rxandroid2"]
     api rootProject.ext.dependencies["retrofit"]
     api rootProject.ext.dependencies["converter-gson"]
-    api rootProject.ext.dependencies["converter-rxjava"]
+    api rootProject.ext.dependencies["converter-rxjava2"]
     api rootProject.ext.dependencies["okhttputils"]
     api rootProject.ext.dependencies["glide"]
     api rootProject.ext.dependencies["eventbus3"]
+    api rootProject.ext.dependencies["easypermissions"]
     // view
     api rootProject.ext.dependencies["FlycoTabLayout_Lib"]
     api rootProject.ext.dependencies["RecyclerViewHelper"]
@@ -72,3 +73,38 @@ dependencies {
     androidTestCompileOnly 'com.android.support.test:runner:1.0.2'
     androidTestCompileOnly('com.android.support.test.espresso:espresso-core:3.0.2')
 }
+
+//// upload maven
+//apply plugin: 'maven'
+//apply plugin: 'signing'
+//
+//ext {
+//    PUBLISH_GROUP_ID = 'com.tianxiabuyi.android'
+//    PUBLISH_ARTIFACT_ID = 'txutils'
+//    PUBLISH_VERSION = '0.1'
+//}
+//
+//signing {
+//    required { hasProperty("release") && gradle.taskGraph.hasTask("uploadArchives") }
+//    sign configurations.archives
+//}
+//
+//uploadArchives {
+//    configuration = configurations.archives
+//    repositories.mavenDeployer {
+//        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+//        //仓库地址
+//        repository(url: 'http://maven.eeesys.com/nexus/content/repositories/android/') {
+//            authentication(userName: "admin", password: "admin123") //用户名密码
+//        }
+//        pom.project {
+//            name 'TxUtils'
+//            packaging 'aar'
+//            description 'tianxiabuyi sdk'
+//            url 'http://maven.eeesys.com/nexus/content/repositories/android/'
+//            groupId PUBLISH_GROUP_ID
+//            artifactId PUBLISH_ARTIFACT_ID
+//            version android.defaultConfig.versionName
+//        }
+//    }
+//}

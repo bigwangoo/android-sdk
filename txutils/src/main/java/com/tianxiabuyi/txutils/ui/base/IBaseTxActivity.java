@@ -1,4 +1,4 @@
-package com.tianxiabuyi.txutils.ui.base.impl;
+package com.tianxiabuyi.txutils.ui.base;
 
 import android.content.Intent;
 

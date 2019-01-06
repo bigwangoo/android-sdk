@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import com.tianxiabuyi.txutils.TxUtils;
-import com.tianxiabuyi.txutils.ui.base.impl.IBaseTxActivity;
+import com.tianxiabuyi.txutils.ui.base.IBaseTxActivity;
 import com.tianxiabuyi.txutils.app.TxConstants;
 import com.tianxiabuyi.txutils.network.TxCall;
 import com.tianxiabuyi.txutils.network.exception.TxException;

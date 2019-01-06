@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 import com.tianxiabuyi.txutils.R;
 import com.tianxiabuyi.txutils.manager.TxFileManager;
-import com.tianxiabuyi.txutils.network.callback.ResponseCallback;
+import com.tianxiabuyi.txutils.network.callback.impl.ResponseCallback;
 import com.tianxiabuyi.txutils.network.exception.TxException;
 import com.tianxiabuyi.txutils.network.model.TxFileResult;
 import com.tianxiabuyi.txutils.util.FileProvider7;

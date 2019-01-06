@@ -30,7 +30,7 @@ public class TxConstants {
     public static final String EXTRA_RECYCLER_ACTIVITY_TYPE = "extra_recycler_activity_type";
     public static final String EXTRA_TOKEN_EXPIRES = "extra_token_expires";
 
-    // KEY
+    // SP KEY
     public static final String KEY_TOKEN = "key_token";
     public static final String KEY_USER = "key_user";
     public static final String KEY_USER_ID = "key_user_id";

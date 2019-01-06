@@ -1,4 +1,4 @@
-package com.tianxiabuyi.txutils.network.callback;
+package com.tianxiabuyi.txutils.network.callback.impl;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -10,7 +10,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.JsonParseException;
 import com.tianxiabuyi.txutils.R;
 import com.tianxiabuyi.txutils.TxUtils;
-import com.tianxiabuyi.txutils.network.callback.inter.TxCallback;
+import com.tianxiabuyi.txutils.network.callback.TxCallback;
 import com.tianxiabuyi.txutils.network.exception.TxException;
 import com.tianxiabuyi.txutils.network.model.HttpResult;
 import com.tianxiabuyi.txutils.util.NetUtils;

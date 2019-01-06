@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.tianxiabuyi.txutils.TxUtils;
 import com.tianxiabuyi.txutils.network.TxCall;
-import com.tianxiabuyi.txutils.network.callback.ResponseCallback;
+import com.tianxiabuyi.txutils.network.callback.impl.ResponseCallback;
 import com.tianxiabuyi.txutils.network.model.HttpResult;
 import com.tianxiabuyi.txutils.network.service.TxFeedbackService;
 import com.tianxiabuyi.txutils.util.AppUtils;

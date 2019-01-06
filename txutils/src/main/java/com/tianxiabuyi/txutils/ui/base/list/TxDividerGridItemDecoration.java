@@ -1,4 +1,4 @@
-package com.tianxiabuyi.txutils.ui.base.recyclerview;
+package com.tianxiabuyi.txutils.ui.base.list;
 
 import android.content.Context;
 import android.content.res.TypedArray;

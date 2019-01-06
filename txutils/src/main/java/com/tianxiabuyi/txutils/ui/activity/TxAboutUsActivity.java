@@ -55,7 +55,7 @@ public class TxAboutUsActivity extends BaseTxTitleActivity {
 
     @Override
     public int getViewByXml() {
-        return R.layout.tx_activity_about_us;
+        return R.layout.tx_activity_compony_info;
     }
 
     @Override

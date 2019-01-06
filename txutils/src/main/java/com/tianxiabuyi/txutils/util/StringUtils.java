@@ -124,6 +124,16 @@ public class StringUtils {
     }
 
     /**
+     * safe toString
+     */
+    public static String obj2String(@Nullable Object obj) {
+        if (obj == null) {
+            return null;
+        }
+        return obj.toString();
+    }
+
+    /**
      * 不显示null  null=""
      */
     public static String emptyIfNull(@Nullable String str) {
@@ -135,16 +145,6 @@ public class StringUtils {
      */
     public static String spaceIfNull(@Nullable String str) {
         return TextUtils.isEmpty(str) ? " " : str;
-    }
-
-    /**
-     * safe toString
-     */
-    public static String obj2String(@Nullable Object obj) {
-        if (obj == null) {
-            return null;
-        }
-        return obj.toString();
     }
 
     /**

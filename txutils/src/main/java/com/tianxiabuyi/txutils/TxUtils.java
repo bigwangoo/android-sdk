@@ -129,7 +129,7 @@ public class TxUtils {
      */
     public OkHttpClient.Builder getDefaultOkHttpBuilder(TxConfiguration configuration) {
         return new OkHttpClient.Builder()
-                .addInterceptor(new TxInterceptor(configuration))
+                .addInterceptor(new TxInterceptor())
                 .addInterceptor(new TxLoggerInterceptor(TAG, configuration.isDebug()))
                 .connectTimeout(TxConstants.READ_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(TxConstants.READ_TIMEOUT, TimeUnit.SECONDS);

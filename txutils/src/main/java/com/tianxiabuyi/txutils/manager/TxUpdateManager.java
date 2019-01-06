@@ -9,7 +9,7 @@ import android.text.TextUtils;
 import com.tianxiabuyi.txutils.R;
 import com.tianxiabuyi.txutils.TxUtils;
 import com.tianxiabuyi.txutils.ui.activity.TxUpdateActivity;
-import com.tianxiabuyi.txutils.network.callback.ResponseCallback;
+import com.tianxiabuyi.txutils.network.callback.impl.ResponseCallback;
 import com.tianxiabuyi.txutils.network.exception.TxException;
 import com.tianxiabuyi.txutils.network.model.TxUpdateResult;
 import com.tianxiabuyi.txutils.network.service.TxUpdateService;

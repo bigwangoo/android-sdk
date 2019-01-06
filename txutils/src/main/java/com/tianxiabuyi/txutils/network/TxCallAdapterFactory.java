@@ -1,5 +1,7 @@
 package com.tianxiabuyi.txutils.network;
 
+import android.support.annotation.NonNull;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -18,7 +20,7 @@ public class TxCallAdapterFactory extends CallAdapter.Factory {
     }
 
     @Override
-    public CallAdapter<?, ?> get(Type returnType, Annotation[] annotations, Retrofit retrofit) {
+    public CallAdapter<?, ?> get(@NonNull Type returnType, @NonNull Annotation[] annotations, @NonNull Retrofit retrofit) {
         Class<?> rawType = getRawType(returnType);
 
         if (rawType == TxCall.class && returnType instanceof ParameterizedType) {

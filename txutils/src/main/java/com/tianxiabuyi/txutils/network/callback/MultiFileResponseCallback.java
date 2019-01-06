@@ -1,4 +1,4 @@
-package com.tianxiabuyi.txutils.network.callback.inter;
+package com.tianxiabuyi.txutils.network.callback;
 
 import com.tianxiabuyi.txutils.network.exception.TxException;
 import com.tianxiabuyi.txutils.network.model.TxMultiFileResult;
