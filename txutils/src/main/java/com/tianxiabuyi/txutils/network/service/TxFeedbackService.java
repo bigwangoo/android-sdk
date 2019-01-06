@@ -16,7 +16,7 @@ public interface TxFeedbackService {
     @POST("app/feedback")
     TxCall<HttpResult> sendFeedback(@Query("device") int device,
                                     @Query("version") String version,
-                                    @Query("version_code") int version_code,
+                                    @Query("version_code") int versionCode,
                                     @Query("suggestion") String suggestion,
                                     @Query("grade") float grade,
                                     @Query("uid") String uid);

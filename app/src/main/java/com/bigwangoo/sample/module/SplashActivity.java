@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.bigwangoo.sample.R;
-import com.tianxiabuyi.txutils.base.activity.BaseTxActivity;
+import com.tianxiabuyi.txutils.ui.base.activity.BaseTxActivity;
 
 
 /**

@@ -1,6 +1,6 @@
 package com.tianxiabuyi.txutils.network.service;
 
-import com.tianxiabuyi.txutils.config.TxConstants;
+import com.tianxiabuyi.txutils.app.TxConstants;
 import com.tianxiabuyi.txutils.network.TxCall;
 import com.tianxiabuyi.txutils.network.model.TxFileResult;
 

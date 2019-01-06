@@ -4,7 +4,7 @@ import com.bigwangoo.sample.R;
 import com.bigwangoo.sample.greendao.UserDao;
 import com.bigwangoo.sample.module.greendao.model.User;
 import com.bigwangoo.sample.module.greendao.utils.DbHelper;
-import com.tianxiabuyi.txutils.base.activity.BaseTxActivity;
+import com.tianxiabuyi.txutils.ui.base.activity.BaseTxActivity;
 
 import org.greenrobot.greendao.rx.RxQuery;
 

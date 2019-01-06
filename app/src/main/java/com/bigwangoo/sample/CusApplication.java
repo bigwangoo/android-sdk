@@ -10,10 +10,10 @@ import com.github.mzule.activityrouter.router.RouterCallbackProvider;
 import com.github.mzule.activityrouter.router.SimpleRouterCallback;
 import com.tianxiabuyi.txutils.TxConfiguration;
 import com.tianxiabuyi.txutils.TxUtils;
-import com.tianxiabuyi.txutils.imageloader.glide.GlideImageLoaderProvider;
+import com.tianxiabuyi.txutils.util.ToastUtils;
 
 /**
- * @author WangYaoDong
+ * @author wangyd
  * @date 2017/4/25
  */
 public class CusApplication extends MultiDexApplication implements RouterCallbackProvider {
@@ -21,7 +21,21 @@ public class CusApplication extends MultiDexApplication implements RouterCallbac
     @Override
     public void onCreate() {
         super.onCreate();
+        // sdk
         initTxUtils();
+        // 数据库
+        initDb();
+    }
+
+    private void initTxUtils() {
+        TxConfiguration configuration = new TxConfiguration.Builder(this)
+                .mode(Constant.MODE_DEBUG)
+                .baseUrl(Constant.BASE_URL)
+                .build();
+        TxUtils.getInstance().init(configuration);
+    }
+
+    private void initDb() {
         DbHelper.getInstance().initDao(this);
     }
 
@@ -54,21 +68,8 @@ public class CusApplication extends MultiDexApplication implements RouterCallbac
 
             @Override
             public void notFound(Context context, Uri uri) {
-                // ToastUtil.show("模块正在建设中...");
+                ToastUtils.show("模块正在建设中...");
             }
         };
-    }
-
-    private void initTxUtils() {
-        TxUtils.getInstance().init(new TxConfiguration.Builder(this)
-                .mode(Constant.MODE_DEBUG)
-                .baseUrl(Constant.BASE_URL)
-                .appType(Constant.APP_TYPE)
-                .hospitalId(Constant.HOSPITAL)
-//                .loginClass(LoginActivity.class)
-                .imageLoader(new GlideImageLoaderProvider())
-                .colorPrimary(R.color.colorPrimary)
-                .isCacheOn(true)
-                .build());
     }
 }

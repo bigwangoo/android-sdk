@@ -3,8 +3,9 @@ package com.tianxiabuyi.txutils;
 import android.app.Application;
 import android.content.Context;
 
+import com.tianxiabuyi.txutils.app.TxConstants;
 import com.tianxiabuyi.txutils.db.x;
-import com.tianxiabuyi.txutils.imageloader.universal.UniversalImageLoaderTool;
+import com.tianxiabuyi.txutils.imageloader.TxImageLoader;
 import com.tianxiabuyi.txutils.network.intercept.TxCacheInterceptor;
 import com.tianxiabuyi.txutils.network.intercept.TxInterceptor;
 import com.tianxiabuyi.txutils.network.intercept.TxLoggerInterceptor;
@@ -20,9 +21,6 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 
-import static com.tianxiabuyi.txutils.config.TxConstants.FILE_TIMEOUT;
-import static com.tianxiabuyi.txutils.config.TxConstants.TIMEOUT;
-
 /**
  * @author xjh1994
  * @date 2016/7/15
@@ -32,11 +30,8 @@ public class TxUtils {
     public static final String TAG = TxUtils.class.getSimpleName();
 
     private volatile static TxUtils mInstance;
-
     private TxConfiguration mConfiguration;
-
     private Platform mPlatform;
-
     private OkHttpClient mOkHttpClient;
 
     public TxUtils() {
@@ -55,18 +50,18 @@ public class TxUtils {
     }
 
     /**
-     * 初始化配置
+     * 初始化
      */
-    public synchronized void init(TxConfiguration configuration) {
-        this.mConfiguration = configuration;
+    public synchronized void init(TxConfiguration config) {
+        this.mConfiguration = config;
 
-        //网络框架
-        OkHttpClient.Builder okHttpBuilder = configuration.getOkHttpBuilder();
-        if (okHttpBuilder == null) {
-            okHttpBuilder = getDefaultOkHttpBuilder(configuration);
+        // 网络框架
+        OkHttpClient.Builder builder = config.getOkHttpBuilder();
+        if (builder == null) {
+            builder = getDefaultOkHttpBuilder(config);
         }
-        //添加缓存 需要读写权限
-        if (configuration.isCacheOn()) {
+        if (config.isCacheOn()) {
+            // 添加缓存(需要读写权限)
             File cacheFile = FileUtils.getExternalCacheDir(FileUtils.CACHE);
             if (cacheFile == null) {
                 return;
@@ -75,32 +70,33 @@ public class TxUtils {
             //缓存大小50M
             Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
             TxCacheInterceptor cacheInterceptor = new TxCacheInterceptor(mConfiguration);
-            okHttpBuilder.addNetworkInterceptor(cacheInterceptor);
-            okHttpBuilder.addInterceptor(cacheInterceptor);
-            okHttpBuilder.cache(cache);
-            okHttpBuilder.retryOnConnectionFailure(true);
+            builder.addNetworkInterceptor(cacheInterceptor);
+            builder.addInterceptor(cacheInterceptor);
+            builder.cache(cache);
+            builder.retryOnConnectionFailure(true);
         }
-        this.mOkHttpClient = okHttpBuilder.build();
+        this.mOkHttpClient = builder.build();
 
-        //数据库（xUtils db）
-        x.Ext.init((Application) configuration.getContext());
-        x.Ext.setDebug(configuration.isDebug());
-
-        //ImageLoader
-        if (configuration.getImageLoaderProvider() == null) {
-            UniversalImageLoaderTool.initImageLoader(configuration.getContext());
-        } else {
-            TxImageLoader.getInstance().init(configuration.getImageLoaderProvider());
-        }
-
-        //OkHttpUtils
+        // OkHttpUtils
         OkHttpUtils.initClient(new OkHttpClient.Builder()
-                .connectTimeout(FILE_TIMEOUT, TimeUnit.SECONDS)
-                .readTimeout(FILE_TIMEOUT, TimeUnit.SECONDS)
-                .addInterceptor(new LoggerInterceptor(configuration.getContext().getString(R.string.tx_app_name)))
+                .connectTimeout(TxConstants.FILE_TIMEOUT, TimeUnit.SECONDS)
+                .readTimeout(TxConstants.FILE_TIMEOUT, TimeUnit.SECONDS)
+                .addInterceptor(new LoggerInterceptor(TAG))
                 .build());
+
+        // 图片加载
+        if (config.getImageLoaderProvider() != null) {
+            TxImageLoader.getInstance().init(config.getImageLoaderProvider());
+        }
+
+        // 数据库（xUtils db）
+        x.Ext.init((Application) config.getContext());
+        x.Ext.setDebug(config.isDebug());
     }
 
+    /**
+     * 调试
+     */
     public boolean isDebug() {
         return mConfiguration.isDebug();
     }
@@ -125,19 +121,17 @@ public class TxUtils {
      * 特定接口需要使用默认配置
      */
     public OkHttpClient getDefaultOkHttp() {
-        return TxUtils.getInstance().getDefaultOkHttpBuilder(mConfiguration).build();
+        return getDefaultOkHttpBuilder(mConfiguration).build();
     }
 
     /**
      * 特定接口需要使用默认配置
      */
     public OkHttpClient.Builder getDefaultOkHttpBuilder(TxConfiguration configuration) {
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        String tag = configuration.getContext().getString(R.string.tx_app_name);
-        builder.addInterceptor(new TxInterceptor(configuration))
-                .addInterceptor(new TxLoggerInterceptor(tag, configuration.isDebug()))
-                .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
-                .readTimeout(TIMEOUT, TimeUnit.SECONDS);
-        return builder;
+        return new OkHttpClient.Builder()
+                .addInterceptor(new TxInterceptor(configuration))
+                .addInterceptor(new TxLoggerInterceptor(TAG, configuration.isDebug()))
+                .connectTimeout(TxConstants.READ_TIMEOUT, TimeUnit.SECONDS)
+                .readTimeout(TxConstants.READ_TIMEOUT, TimeUnit.SECONDS);
     }
 }

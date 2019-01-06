@@ -3,7 +3,7 @@ package com.tianxiabuyi.txutils;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.tianxiabuyi.txutils.config.TxConstants;
+import com.tianxiabuyi.txutils.app.TxConstants;
 import com.tianxiabuyi.txutils.imageloader.BaseImageLoaderProvider;
 
 import okhttp3.OkHttpClient;
@@ -20,38 +20,26 @@ public class TxConfiguration {
 
     private final boolean mode;
     private final Context context;
-    private final String baseUrl;                               //api地址 （必传）
-    private final String appType;                               //APP类型 （必传）
-    private final String hospitalId;                            //医院id  （必传）
-    private final String token;                                 //token
-    private final String tokenRefreshUrl;                       //token刷新地址
-    private final String theme;                                 //主题
-    private final int colorPrimary;                             //主题色
-    private final BaseImageLoaderProvider imageLoaderProvider;  //图片加载
-    private final Class loginClass;                             //登录界面
-    private final OkHttpClient.Builder okHttpBuilder;           //自定义okHttpBuilder
-    private final boolean isCacheOn;                            //开启缓存              默认关闭
-    private final boolean isCacheFromHeader;                    //Header方式缓存        默认开启
-    private final boolean isCacheNetworkOff;                    //无网络是否使用缓存    默认关闭
-    private final int cacheTime;                                //缓存时间，单位是秒
+    private final String baseUrl;                               // API地址 （必传）
+    private final Class loginClass;                             // 登录界面
+    private final BaseImageLoaderProvider imageLoaderProvider;  // 图片加载
+    private final OkHttpClient.Builder okHttpBuilder;           // 自定义okHttpBuilder
+    private final boolean isCacheOn;                            // 开启缓存              默认关闭
+    private final boolean isCacheFromHeader;                    // 缓存方式 header       默认开启
+    private final boolean isCacheNetworkOff;                    // 无网络时是否使用缓存  默认关闭
+    private final int cacheTime;                                // 缓存时间，单位是秒
 
     public TxConfiguration(final Builder builder) {
         this.mode = builder.mode;
         this.context = builder.context;
         this.baseUrl = builder.baseUrl;
-        this.appType = builder.appType;
-        this.hospitalId = builder.hospitalId;
-        this.token = builder.token;
-        this.tokenRefreshUrl = builder.tokenRefreshUrl;
-        this.theme = builder.theme;
-        this.colorPrimary = builder.colorPrimary;
+        this.loginClass = builder.loginClass;
         this.imageLoaderProvider = builder.imageLoaderProvider;
         this.okHttpBuilder = builder.okHttpBuilder;
         this.isCacheOn = builder.isCacheOn;
         this.isCacheFromHeader = builder.isCacheFromHeader;
-        this.cacheTime = builder.cacheTime;
         this.isCacheNetworkOff = builder.isCacheNetworkOff;
-        this.loginClass = builder.loginClass;
+        this.cacheTime = builder.cacheTime;
     }
 
     public boolean isDebug() {
@@ -66,28 +54,8 @@ public class TxConfiguration {
         return baseUrl;
     }
 
-    public String getAppType() {
-        return appType;
-    }
-
-    public String getHospitalId() {
-        return hospitalId;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public String getTokenRefreshUrl() {
-        return tokenRefreshUrl;
-    }
-
-    public String getTheme() {
-        return theme;
-    }
-
-    public int getColorPrimary() {
-        return colorPrimary;
+    public Class getLoginClass() {
+        return loginClass;
     }
 
     public BaseImageLoaderProvider getImageLoaderProvider() {
@@ -114,26 +82,15 @@ public class TxConfiguration {
         return cacheTime;
     }
 
-    public Class getLoginClass() {
-        return loginClass;
-    }
-
     /**
      * builder
      */
     public static class Builder {
         private boolean mode = RELEASE;
-
         private Context context;
         private String baseUrl;
-        private String appType;
-        private String hospitalId;
-        private String token;
-        private String tokenRefreshUrl;
-        private String theme;
-        private int colorPrimary = -1;
-        private BaseImageLoaderProvider imageLoaderProvider;
         private Class loginClass;
+        private BaseImageLoaderProvider imageLoaderProvider;
         private OkHttpClient.Builder okHttpBuilder;
         private boolean isCacheOn = false;
         private boolean isCacheFromHeader = true;
@@ -154,43 +111,13 @@ public class TxConfiguration {
             return this;
         }
 
-        public Builder appType(String appType) {
-            this.appType = appType;
-            return this;
-        }
-
-        public Builder hospitalId(String hospitalId) {
-            this.hospitalId = hospitalId;
-            return this;
-        }
-
-        public Builder token(String token) {
-            this.token = token;
-            return this;
-        }
-
-        public Builder tokenRefreshUrl(String tokenRefreshUrl) {
-            this.tokenRefreshUrl = tokenRefreshUrl;
-            return this;
-        }
-
-        public Builder theme(String theme) {
-            this.theme = theme;
-            return this;
-        }
-
-        public Builder colorPrimary(int colorPrimary) {
-            this.colorPrimary = colorPrimary;
+        public Builder loginClass(Class loginClass) {
+            this.loginClass = loginClass;
             return this;
         }
 
         public Builder imageLoader(BaseImageLoaderProvider imageLoaderProvider) {
             this.imageLoaderProvider = imageLoaderProvider;
-            return this;
-        }
-
-        public Builder loginClass(Class loginClass) {
-            this.loginClass = loginClass;
             return this;
         }
 
@@ -229,15 +156,9 @@ public class TxConfiguration {
                 baseUrl = TxConstants.BASE_URL;
             }
 
-            if (TextUtils.isEmpty(tokenRefreshUrl)) {
-                tokenRefreshUrl = TxConstants.TOKEN_REFRESH_URL;
-            }
-
-            if (colorPrimary == -1) {
-                throw new NullPointerException("colorPrimary cannot be null. " +
-                        "Did you forget to set colorPrimary in TxConfiguration?");
-            }
+//            if (TextUtils.isEmpty(baseUrl)) {
+//                throw new NullPointerException("baseUrl cannot be null");
+//            }
         }
     }
-
 }

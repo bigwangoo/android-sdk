@@ -1,7 +1,7 @@
 package com.tianxiabuyi.txutils.network.service;
 
 import com.google.gson.JsonElement;
-import com.tianxiabuyi.txutils.config.TxConstants;
+import com.tianxiabuyi.txutils.app.TxConstants;
 import com.tianxiabuyi.txutils.network.TxCall;
 import com.tianxiabuyi.txutils.network.model.HttpResult;
 import com.tianxiabuyi.txutils.network.model.TokenResult;
@@ -29,13 +29,12 @@ public interface TxUserService {
     TxCall<HttpResult> register(@QueryMap Map<String, String> queryMap);
 
     @POST(TxConstants.USER_LOGIN_URL)
-    TxCall<JsonElement> login(@Query("user_name") String username,
+    TxCall<JsonElement> login(@Query("username") String username,
                               @Query("password") String password);
 
     @POST(TxConstants.USER_PASSWORD_URL)
-    TxCall<HttpResult> updatePassword(@Query("old_password") String old_password,
-                                      @Query("password") String password,
-                                      @Query("repassword") String repassword);
+    TxCall<HttpResult> updatePassword(@Query("password") String password,
+                                      @Query("oldPassword") String oldPassword);
 
     @POST(TxConstants.USER_AVATAR_URL)
     TxCall<HttpResult> updateAvatar(@Query("avatar") String avatar);

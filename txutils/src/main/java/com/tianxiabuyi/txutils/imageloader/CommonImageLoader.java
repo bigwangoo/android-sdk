@@ -2,22 +2,18 @@ package com.tianxiabuyi.txutils.imageloader;
 
 import android.widget.ImageView;
 
-import com.tianxiabuyi.txutils.R;
-import com.tianxiabuyi.txutils.TxImageLoader;
-
 /**
- * Created by xjh1994 on 2016/5/30.
+ * @author xjh1994
+ * @date 2016/5/30
  */
 public class CommonImageLoader {
-    //占位图
-    public static final int PLACEHOLDER = R.drawable.tx_loading;
 
-    private int type;  //类型 (大图，中图，小图) TODO
-    private String url; //需要解析的url
-    private int placeHolder; //当没有成功加载的时候显示的图片
-    private ImageView imgView; //ImageView的实例
-    private int strategy;//加载策略，是否在wifi下才加载
-    private boolean circle;
+    private int type;           //类型 TODO(大图，中图，小图)
+    private String url;         //需要解析的url
+    private ImageView imgView;  //ImageView的实例
+    private int placeHolder;    //当没有成功加载的时候显示的图片
+    private int strategy;       //加载策略，是否在wifi下才加载
+    private boolean circle;     //圆形
     private boolean round;      //圆角
     private int roundRadius;    //圆角半径
 
@@ -40,12 +36,12 @@ public class CommonImageLoader {
         return url;
     }
 
-    public int getPlaceHolder() {
-        return placeHolder;
-    }
-
     public ImageView getImgView() {
         return imgView;
+    }
+
+    public int getPlaceHolder() {
+        return placeHolder;
     }
 
     public int getStrategy() {
@@ -67,8 +63,8 @@ public class CommonImageLoader {
     public static class Builder {
         private int type;
         private String url;
-        private int placeHolder;
         private ImageView imgView;
+        private int placeHolder;
         private int strategy;
         private boolean circle;
         private boolean round;
@@ -77,8 +73,8 @@ public class CommonImageLoader {
         public Builder() {
             this.type = TxImageLoader.PIC_SMALL;
             this.url = "";
-            this.placeHolder = PLACEHOLDER;
             this.imgView = null;
+            this.placeHolder = TxImageLoader.PLACEHOLDER;
             this.strategy = TxImageLoader.LOAD_STRATEGY_NORMAL;
             this.circle = false;
             this.round = false;

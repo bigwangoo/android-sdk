@@ -6,7 +6,7 @@ import android.content.Intent;
 
 import com.tianxiabuyi.txutils.R;
 import com.tianxiabuyi.txutils.TxUtils;
-import com.tianxiabuyi.txutils.config.TxConstants;
+import com.tianxiabuyi.txutils.app.TxConstants;
 import com.tianxiabuyi.txutils.network.exception.TxException;
 import com.tianxiabuyi.txutils.util.ToastUtils;
 

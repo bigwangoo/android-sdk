@@ -6,9 +6,9 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.tianxiabuyi.txutils.TxConfiguration;
-import com.tianxiabuyi.txutils.TxServiceManager;
-import com.tianxiabuyi.txutils.TxUserManager;
-import com.tianxiabuyi.txutils.config.TxConstants;
+import com.tianxiabuyi.txutils.manager.TxServiceManager;
+import com.tianxiabuyi.txutils.manager.TxUserManager;
+import com.tianxiabuyi.txutils.app.TxConstants;
 import com.tianxiabuyi.txutils.network.model.HttpResult;
 import com.tianxiabuyi.txutils.network.model.TokenResult;
 import com.tianxiabuyi.txutils.network.service.TxUserService;

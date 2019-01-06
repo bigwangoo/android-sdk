@@ -22,18 +22,19 @@ public class NetStateReceiver extends BroadcastReceiver {
 
         if (ConnectivityManager.CONNECTIVITY_ACTION.equalsIgnoreCase(action)) {
             if (NetUtils.isConnected(context)) {
+                // 网络连接
                 onConnected();
-                //Wifi情况下
                 if (NetUtils.isWifi(context)) {
+                    //Wifi情况下
                     TxLog.e("使用WiFi");
                     onWifi();
-                }
-                //数据流量的情况下
-                else {
+                } else {
+                    //数据流量的情况下
                     TxLog.e("使用数据流量");
                     onData();
                 }
             } else {
+                // 网络断开
                 TxLog.e("网络连接断开");
                 onDisconnected();
             }
@@ -44,15 +45,15 @@ public class NetStateReceiver extends BroadcastReceiver {
 
     }
 
-    protected void onDisconnected() {
-
-    }
-
     protected void onData() {
 
     }
 
     protected void onWifi() {
+
+    }
+
+    protected void onDisconnected() {
 
     }
 }
